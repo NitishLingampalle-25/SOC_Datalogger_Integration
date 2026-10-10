@@ -15436,6 +15436,7 @@ module gpio_reg_top #(
 
 endmodule
 
+`ifdef REG_INTERFACE_SUPPORT
 module gpio_reg_top_intf
 #(
   parameter int AW = 11,
@@ -15485,5 +15486,6 @@ module gpio_reg_top_intf
   );
   
 endmodule
+`endif
 
 
