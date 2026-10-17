@@ -105,15 +105,16 @@ Crossbar with round-robin arbitration between Master 1 (RISC-V core) and Master 
 
 ## 5. Repository Structure
 
+```text
 SOC_Datalogger_project/
-├── Docs/                          # Spec doc, session log, error log
-├── RTL_files/                     # Top-level integration RTL (bridge, wrapper, timescale stub)
-├── TB_files/                      # SystemVerilog testbenches
-├── Scripts/                       # Build/utility scripts
-├── run/                           # Filelists and run scripts (VCS compile/sim)
-├── axi-lite_uart-ipcore-develop/  # UART IP core source (RTL + docs)
+├── Docs/                           # Spec doc, session log, error log
+├── RTL_files/                      # Top-level integration RTL (bridge, wrapper, timescale stub)
+├── TB_files/                       # SystemVerilog testbenches
+├── Scripts/                        # Build/utility scripts
+├── run/                            # Filelists and run scripts (VCS compile/sim)
+├── axi-lite_uart-ipcore-develop/   # UART IP core source (RTL + docs)
 └── README.md
-
+```
 
 ## 6. Register Map
 
