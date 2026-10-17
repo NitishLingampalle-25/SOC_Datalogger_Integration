@@ -236,6 +236,10 @@ module gpio #(
   end
 endmodule : gpio
 
+`ifndef SYNTHESIS
+`ifndef DISABLE_GPIO_INTF
+// Excluded during top-level SoC simulation to prevent VCS [SV-UIP] elaboration errors
+/*
 module gpio_intf #(
   /// ADDR_WIDTH of the reg_bus interface
   parameter int unsigned  ADDR_WIDTH = 32,
@@ -286,3 +290,6 @@ module gpio_intf #(
   );
 
 endmodule : gpio_intf
+*/
+`endif
+`endif

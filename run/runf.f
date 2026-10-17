@@ -1,23 +1,16 @@
 // =============================================================================
-// runf.f  —  VCS filelist
+// runf.f — Complete VCS filelist for SoC Datalogger
 // DUT : veer2_dma_aes_wdt_uart_gpio_timer
 // TB  : veer2_dma_aes_wdt_uart_gpio_timer_tb
-//
-// Run from the run/ directory:
-//   vcs -full64 -sverilog -l compile.log -f runf.f -o simv_full_soc
-//   ./simv_full_soc
-//
-// With Verdi:
-//   vcs -full64 -sverilog -debug_access+all -kdb -l compile.log -f runf.f -o simv_full_soc
-//   ./simv_full_soc -verdi
 // =============================================================================
 
 -sverilog
 -timescale=1ns/1ps
+-top veer2_dma_aes_wdt_uart_gpio_timer_tb
 +define+RV_BUILD_AXI4
 +define+RV_PHYSICAL
 
-// ---- Include directories ----
+// ---- Include Directories ----
 +incdir+/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default
 +incdir+/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include
 +incdir+/home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include
@@ -26,7 +19,30 @@
 +incdir+/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO
 
 // =========================================================================
-// VeeR EL2 Core — common_defines.vh MUST be first
+// 1. RgGen Primitives & Adapters (All internal cells explicitly listed)
+// =========================================================================
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_adapter_common.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_skid_buffer.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_bridge.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_adapter.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_address_decoder.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_mux.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_or_reducer.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_register_common.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_w01trg.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_default_register.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_external_register.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_indirect_register.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_maskable_register.v
+
+// =========================================================================
+// 2. OpenTitan & GPIO Primitives
+// =========================================================================
+/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/prim_subreg.sv
+
+// =========================================================================
+// 3. VeeR EL2 Core — common_defines.vh MUST be first
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/common_defines.vh
 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/el2_def.sv
@@ -89,7 +105,7 @@
 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv
 
 // =========================================================================
-// UART IP Core
+// 4. UART IP Core
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/rtl/axi_internal_fifo.v
 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/rtl/uart_parity_bit_compute.v
@@ -99,7 +115,7 @@
 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/rtl/axi_uart_top.v
 
 // =========================================================================
-// AES IP Core
+// 5. AES IP Core
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_rcon.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_sbox.v
@@ -110,11 +126,10 @@
 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes_veer_adapter.v
 
 // =========================================================================
-// DMA Controller — packages first, then rggen primitives, then RTL
+// 6. DMA Controller Subsystem
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/amba_axi_pkg.sv
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/dma_utils_pkg.sv
-
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_fifo.sv
@@ -125,13 +140,13 @@
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv
 
 // =========================================================================
-// Watchdog Timer
+// 7. Watchdog Timer
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/WDT/EF_WDT32.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/WDT/ef_wdt32_axi_wrapper.v
 
 // =========================================================================
-// GPIO IP Core (REG_BUS interface first, then package, then modules)
+// 8. GPIO IP Core
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/reg_bus_intf.sv
 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_reg_pkg.sv
@@ -140,12 +155,12 @@
 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio.sv
 
 // =========================================================================
-// System Timer
+// 9. System Timer
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/System_Timer/timer_core.sv
 
 // =========================================================================
-// AXI Interconnect, Bridge, Data-Width Converter
+// 10. AXI Interconnect, Bridge, Data-Width Converter
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/priority_encoder.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/arbiter.v
@@ -155,17 +170,18 @@
 /home/student/Documents/SOC_Datalogger_project/RTL_files/axi_dwidth_converter_64to32.v
 
 // =========================================================================
-// AXI4 wrappers for GPIO and System Timer
+// 11. Peripheral AXI4 Wrappers
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/gpio_axi_wrapper.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/timer_axi_wrapper.v
 
 // =========================================================================
-// SoC Top-Level
+// 12. SoC Top-Level
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v
 
 // =========================================================================
-// Testbench — must be last
+// 13. Testbench
 // =========================================================================
 /home/student/Documents/SOC_Datalogger_project/TB_files/veer2_dma_aes_wdt_uart_gpio_timer_tb.sv
+

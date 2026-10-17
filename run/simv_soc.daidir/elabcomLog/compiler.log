@@ -1,0 +1,3 @@
+*design* DebussyLib (btIdent Verdi_U-2023.03)
+Command arguments:  -lib  /home/student/Documents/SOC_Datalogger_project/run/simv_soc.daidir/work  -saveLevel  -elab  /home/student/Documents/SOC_Datalogger_project/run/simv_soc.daidir/kdb  -simflow  -simdir  /home/student/Documents/SOC_Datalogger_project/run/simv_soc.daidir/kdb_libs  -topfile  /home/student/Documents/SOC_Datalogger_project/run/simv_soc.daidir/.elabcomTopFile  -pkgfile  /home/student/Documents/SOC_Datalogger_project/run/simv_soc.daidir/.elabcomPkgFile  -ssv  -ssy  -Lf  work  +disable_message+C00380+C00381  +disable_message+C00388+C00389  -SNPS_ELABCOM  -saveElab 
+Total	0 error(s),   0 warning(s)

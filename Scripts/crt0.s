@@ -19,6 +19,12 @@ _start:
     blt     t0, t1, .Lbss_loop
 .Lbss_done:
 
+    # Set MRAC CSR (0x7C0): mark all 16 half-GB regions as side-effects (no cache)
+    # Bit encoding per region i: mrac[2i+1]=1 (sideeffect), mrac[2i]=0 (not cacheable)
+    # All 16 regions side-effects = 0xAAAAAAAA
+    li      t0, -0x55555556    # loads 0xAAAAAAAA (li with signed immediate)
+    csrw    0x7C0, t0
+
     # Call main
     call    main
 

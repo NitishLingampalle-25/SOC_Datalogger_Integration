@@ -98,36 +98,44 @@ module axi_dwidth_converter_64to32 #(
     reg         aw_lane_r;
     reg         aw_pending_r;
 
+    wire aw_hs = m_axi_awvalid && s_axi_awready;
+    wire w_hs  = m_axi_wvalid && s_axi_wready && m_axi_wlast;
+
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             aw_lane_r    <= 1'b0;
             aw_pending_r <= 1'b0;
         end else begin
-            if (m_axi_awvalid && s_axi_awready && !aw_pending_r) begin
+            if (aw_hs) begin
                 aw_lane_r    <= m_axi_awaddr[2];
-                aw_pending_r <= 1'b1;
-            end
-            if (aw_pending_r && m_axi_wvalid && s_axi_wready && m_axi_wlast)
+                aw_pending_r <= !w_hs;
+            end else if (w_hs) begin
                 aw_pending_r <= 1'b0;
+            end
         end
     end
 
-    wire aw_lane = aw_pending_r ? aw_lane_r : m_axi_awaddr[2];
+    wire aw_lane = (|m_axi_wstrb[7:4]) ? 1'b1 :
+                   (|m_axi_wstrb[3:0]) ? 1'b0 :
+                   (aw_pending_r ? aw_lane_r : m_axi_awaddr[2]);
 
     reg         ar_lane_r;
     reg         ar_pending_r;
+
+    wire ar_hs = m_axi_arvalid && s_axi_arready;
+    wire r_hs  = s_axi_rvalid && m_axi_rready && s_axi_rlast;
 
     always @(posedge clk or negedge rst_n) begin
         if (!rst_n) begin
             ar_lane_r    <= 1'b0;
             ar_pending_r <= 1'b0;
         end else begin
-            if (m_axi_arvalid && s_axi_arready && !ar_pending_r) begin
+            if (ar_hs) begin
                 ar_lane_r    <= m_axi_araddr[2];
-                ar_pending_r <= 1'b1;
-            end
-            if (ar_pending_r && s_axi_rvalid && m_axi_rready && s_axi_rlast)
+                ar_pending_r <= !r_hs;
+            end else if (r_hs) begin
                 ar_pending_r <= 1'b0;
+            end
         end
     end
 
@@ -146,7 +154,7 @@ module axi_dwidth_converter_64to32 #(
         end
     endgenerate
 
-    assign s_axi_awaddr   = m_axi_awaddr;
+    assign s_axi_awaddr   = {m_axi_awaddr[ADDR_WIDTH-1:3], aw_lane, m_axi_awaddr[1:0]};
     assign s_axi_awlen    = m_axi_awlen;
     assign s_axi_awsize   = aw_size_clamped;
     assign s_axi_awburst  = m_axi_awburst;
@@ -168,7 +176,7 @@ module axi_dwidth_converter_64to32 #(
     assign m_axi_bvalid   = s_axi_bvalid;
     assign s_axi_bready   = m_axi_bready;
 
-    assign s_axi_araddr   = m_axi_araddr;
+    assign s_axi_araddr   = {m_axi_araddr[ADDR_WIDTH-1:3], ar_lane, m_axi_araddr[1:0]};
     assign s_axi_arlen    = m_axi_arlen;
     assign s_axi_arsize   = ar_size_clamped;
     assign s_axi_arburst  = m_axi_arburst;
@@ -180,7 +188,7 @@ module axi_dwidth_converter_64to32 #(
     assign m_axi_arready  = s_axi_arready;
 
     assign m_axi_rid      = s_axi_rid[ID_WIDTH_M-1:0];
-    assign m_axi_rdata    = ar_lane ? {s_axi_rdata, 32'h0} : {32'h0, s_axi_rdata};
+    assign m_axi_rdata    = {s_axi_rdata, s_axi_rdata};
     assign m_axi_rresp    = s_axi_rresp;
     assign m_axi_rlast    = s_axi_rlast;
     assign m_axi_rvalid   = s_axi_rvalid;

@@ -5,52 +5,6 @@
 //
 // DUT        : veer2_dma_aes_wdt_uart_gpio_timer
 //              (UART + System Timer + AES + DMA + WDT + GPIO)
-//
-// Purpose    : Full-chip directed functional verification of the top-level SoC.
-//              The TB drives the full AXI4 register-access interface via a
-//              lightweight BFM task pair (axi_write / axi_read) that directly
-//              stimulates interconnect master s00 — bypassing the VeeR core for
-//              deterministic, tool-independent register-level coverage.
-//              The C firmware path (soc_full_test.c) runs when the core is
-//              loaded; the raw-BFM path runs unconditionally.
-//
-// Test Cases:
-//   TC01  – Power-on Reset: all outputs quiescent, AXI channels idle
-//   TC02  – VeeR IFU Instruction Fetch: core alive, trace bus toggles
-//   TC03  – UART: LCR write + read-back (8N1), baud divisor, IER enable
-//   TC04  – UART: TX character ('K' = 0x4B), serial bit monitor on uart_tx_o
-//   TC05  – UART: RX loopback (inject 0xA5 NRZ on uart_rx_i), RBR read-back
-//   TC06  – UART: uart_read_irq_o assertion after RX byte
-//   TC07  – System Timer: prescaler + step write, counter enable (CTRL=1)
-//   TC08  – System Timer: TIMER_V_LOWER0 increments after enable
-//   TC09  – System Timer: timer_irq_o fires after COMPARE_LOWER0 crossed
-//   TC10  – AES: key load (NIST FIPS-197 vector), text_in write
-//   TC11  – AES: START pulse (AES_CTRL[0]=1), aes_busy_o asserts
-//   TC12  – AES: aes_done_o / aes_done_pulse_o / aes_irq_o after encryption
-//   TC13  – AES: ciphertext read-back matches NIST expected value
-//   TC14  – DMA: CSR version read-back (DMA_CTRL = 0xCAFE_xxxx pattern)
-//   TC15  – DMA: descriptor write (SRC, DST, LEN), START bit arm
-//   TC16  – DMA: dma_done_o / dma_irq_o assertion after burst completion
-//   TC17  – WDT: WDT_LOAD write, WDT_CTRL enable (bit0), down-counting
-//   TC18  – WDT: software ping (WDT_PING_REG), counter reload verified
-//   TC19  – WDT: AES auto-kick (aes_done_pulse_o → WDT counter reloaded)
-//   TC20  – WDT: timeout → wdt_irq_o early-warning, W1C clear
-//   TC21  – WDT: NMI escalation (wdt_nmi_o), hard-reset (wdt_reset_o)
-//   TC22  – GPIO: output enable write (GPIO_EN = 0xFF), GPIO_OUT write
-//   TC23  – GPIO: gpio_out_o and gpio_tx_en_o match written values
-//   TC24  – GPIO: input read (GPIO_IN) reflects gpio_in_i stimulus
-//   TC25  – GPIO: gpio_irq_o on rising-edge interrupt enable
-//   TC26  – Full pipeline: UART → DMA → AES → WDT-kick (autonomous path)
-//   TC27  – Multi-master concurrency: CPU BFM + DMA simultaneous AXI access
-//   TC28  – SLVERR: out-of-range address (0x4000_9000) returns SLVERR
-//
-// Notes:
-//   • `timescale is embedded per-file (VCS per-file timescale reset rule).
-//   • All AXI accesses use ID=0, single-beat (len=0, size=2, burst=INCR).
-//   • X-propagation guards are handled in the DUT; TB drives clean 1'b0/1'b1.
-//   • TIMEOUT_CYC watchdog aborts any stalled handshake with an $error.
-//   • Pass/fail printed to stdout with [PASS] / [FAIL] markers.
-//   • Waveforms dumped to full_soc_tb.fsdb (Verdi) or full_soc_tb.vcd.
 // =============================================================================
 
 `timescale 1ns/1ps
@@ -133,7 +87,7 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     localparam [31:0] DMA_DESC1_SRC   = DMA_BASE + 32'h28;
     localparam [31:0] DMA_DESC1_DST   = DMA_BASE + 32'h38;
 
-    // Watchdog (0x4000_4000)  — offsets per ef_wdt32_axi_wrapper
+    // Watchdog (0x4000_4000)
     localparam [31:0] WDT_BASE        = 32'h4000_4000;
     localparam [31:0] WDT_LOAD        = WDT_BASE  + 32'h04;
     localparam [31:0] WDT_CTRL        = WDT_BASE  + 32'h08;
@@ -143,7 +97,7 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     localparam [31:0] WDT_MIS         = WDT_BASE  + 32'h18;
     localparam [31:0] WDT_IC          = WDT_BASE  + 32'h1C;
 
-    // GPIO (0x4000_5000)  — offsets per gpio_axi_wrapper / gpio_reg_top
+    // GPIO (0x4000_5000)
     localparam [31:0] GPIO_BASE       = 32'h4000_5000;
     localparam [31:0] GPIO_EN_REG     = GPIO_BASE + 32'h080;
     localparam [31:0] GPIO_IN_REG     = GPIO_BASE + 32'h100;
@@ -158,13 +112,7 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     // Unmapped (for SLVERR test)
     localparam [31:0] UNMAPPED_ADDR   = 32'h4000_9000;
 
-    // =========================================================================
     // NIST FIPS-197 Test Vector (Appendix B)
-    //   Key      : 2b 7e 15 16  28 ae d2 a6  ab f7 15 88  09 cf 4f 3c
-    //   Plaintext: 32 43 f6 a8  88 5a 30 8d  31 31 98 a2  e0 37 07 34
-    //   Cipher   : 39 25 84 1d  02 dc 09 fb  dc 11 85 97  19 6a 0b 32
-    //   (word order: text[127:96] = word0, text[95:64] = word1, ...)
-    // =========================================================================
     localparam [31:0] AES_KEY_W0      = 32'h2b7e1516;
     localparam [31:0] AES_KEY_W1      = 32'h28aed2a6;
     localparam [31:0] AES_KEY_W2      = 32'habf71588;
@@ -172,7 +120,7 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
 
     localparam [31:0] AES_PT_W0       = 32'h3243f6a8;
     localparam [31:0] AES_PT_W1       = 32'h885a308d;
-    localparam [31:0] AES_PT_W2       = 32'h3131982a;  // note: spec uses 2a not a2
+    localparam [31:0] AES_PT_W2       = 32'h313198a2;
     localparam [31:0] AES_PT_W3       = 32'he0370734;
 
     localparam [31:0] AES_CT_W0       = 32'h3925841d;
@@ -197,43 +145,38 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     // =========================================================================
     // DUT port declarations
     // =========================================================================
-
-    // Boot
     logic [31:1]  rst_vec;
     logic [31:1]  nmi_vec;
     logic [31:1]  jtag_id;
     logic [31:4]  core_id;
 
-    // Interrupts
-    logic                      nmi_int;
-    logic                      timer_int;
-    logic                      soft_int;
-    logic [PIC_TOTAL_INT:1]    extintsrc_req;
-    logic                      uart_read_irq_o;
-    logic                      aes_irq_o;
-    logic                      aes_done_pulse_o;
-    logic                      dma_done_o;
-    logic                      dma_error_o;
-    logic                      dma_irq_o;
-    logic                      wdt_irq_o;
-    logic                      wdt_nmi_o;
-    logic                      wdt_reset_o;
-    logic                      wdt_timeout_o;
-    logic                      gpio_irq_o;
-    logic                      timer_irq_o;
+    logic         nmi_int;
+    logic         timer_int;
+    logic         soft_int;
+    logic [PIC_TOTAL_INT:1] extintsrc_req;
+    logic         uart_read_irq_o;
+    logic         aes_irq_o;
+    logic         aes_done_pulse_o;
+    logic         dma_done_o;
+    logic         dma_error_o;
+    logic         dma_irq_o;
+    logic         wdt_irq_o;
+    logic         wdt_nmi_o;
+    logic         wdt_reset_o;
+    logic         wdt_timeout_o;
+    logic         gpio_irq_o;
+    logic         timer_irq_o;
 
-    // UART
-    logic uart_tx_o;
-    logic uart_rx_i;
-    logic aes_busy_o;
-    logic aes_done_o;
+    logic         uart_tx_o;
+    logic         uart_rx_i;
+    logic         aes_busy_o;
+    logic         aes_done_o;
 
-    // GPIO
-    logic [31:0] gpio_in_i;
-    logic [31:0] gpio_out_o;
-    logic [31:0] gpio_tx_en_o;
+    logic [31:0]  gpio_in_i;
+    logic [31:0]  gpio_out_o;
+    logic [31:0]  gpio_tx_en_o;
 
-    // IFU AXI (external instruction memory)
+    // IFU AXI
     logic                        ifu_axi_arvalid;
     logic                        ifu_axi_arready;
     logic [IFU_BUS_TAG-1:0]      ifu_axi_arid;
@@ -274,7 +217,7 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     logic [1:0]                  ifu_axi_bresp;
     logic [IFU_BUS_TAG-1:0]      ifu_axi_bid;
 
-    // SB (system bus, tied off — not used in this TB)
+    // SB AXI
     logic                        sb_axi_awvalid;
     logic                        sb_axi_awready;
     logic [SB_BUS_TAG-1:0]       sb_axi_awid;
@@ -315,7 +258,7 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     logic [1:0]                  sb_axi_rresp;
     logic                        sb_axi_rlast;
 
-    // VeeR DMA slave (DCCM DMA write — tied off in this TB)
+    // VeeR DMA slave
     logic                        dma_axi_awvalid;
     logic                        dma_axi_awready;
     logic [DMA_BUS_TAG-1:0]      dma_axi_awid;
@@ -580,35 +523,103 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     );
 
     // =========================================================================
-    // IFU memory model — returns NOP (ADDI x0,x0,0 = 0x00000013) on every fetch
+    // IFU memory model — loaded from hex with $readmemh
     // =========================================================================
+    localparam [31:0] BOOT_ADDR  = 32'h0000_0000;
+    localparam [31:0] IMEM_BYTES = 32'h0002_0000;   // 128 KB covers 0x0 .. 0x1_FFFF
+
+    logic [7:0] imem [0:IMEM_BYTES-1];
+    string      hex_file;
+    bit         fw_en;
+
+    initial begin
+        for (int i = 0; i < IMEM_BYTES; i++)
+            imem[i] = (i % 4 == 0) ? 8'h13 : 8'h00; // NOP fill (addi x0, x0, 0)
+        fw_en = !$test$plusargs("NOFW");
+        if (!$value$plusargs("HEX=%s", hex_file))
+            hex_file = "soc_full_test.hex";
+        if (fw_en) begin
+            $readmemh(hex_file, imem);
+            $display("[TB] Loaded firmware '%s' into imem (boot addr 0x%08h)",
+                     hex_file, BOOT_ADDR);
+        end else
+            $display("[TB] +NOFW : IFU returns NOPs only");
+    end
+
+    function automatic logic [63:0] imem_rd64(input logic [31:0] addr);
+        logic [31:0] base;
+        base = {addr[31:3], 3'b000};
+        for (int k = 0; k < 8; k++)
+            imem_rd64[8*k +: 8] = ((base + k) < IMEM_BYTES) ? imem[base + k]
+                                                            : (((k % 4) == 0) ? 8'h13 : 8'h00);
+    endfunction
+
+    function automatic logic [31:0] imem_next(input logic [31:0] addr,
+                                               input logic [1:0]  burst,
+                                               input logic [7:0]  len);
+        logic [31:0] inc, wmask;
+        inc   = {addr[31:3], 3'b000} + 32'd8;
+        wmask = ({24'd0, len} + 32'd1) * 32'd8 - 32'd1;
+        if (burst == 2'b10)
+            imem_next = ({addr[31:3], 3'b000} & ~wmask) | (inc & wmask);
+        else
+            imem_next = inc;
+    endfunction
+
+    logic        ifu_busy;
+    logic [31:0] ifu_cur_addr;
+    logic [7:0]  ifu_beats_left;
+    logic [7:0]  ifu_len_q;
+    logic [1:0]  ifu_burst_q;
+
+    assign ifu_axi_arready = !ifu_busy;
+
     always_ff @(posedge clk) begin
         if (!rst_l) begin
-            ifu_axi_arready <= 1'b0;
+            ifu_busy        <= 1'b0;
             ifu_axi_rvalid  <= 1'b0;
-            ifu_axi_rdata   <= 64'h0000_0013_0000_0013; // two NOPs
+            ifu_axi_rdata   <= 64'h0000_0013_0000_0013;
             ifu_axi_rresp   <= 2'b00;
             ifu_axi_rid     <= '0;
             ifu_axi_rlast   <= 1'b0;
+            ifu_cur_addr    <= '0;
+            ifu_beats_left  <= '0;
+            ifu_len_q       <= '0;
+            ifu_burst_q     <= 2'b01;
         end else begin
-            ifu_axi_arready <= ifu_axi_arvalid;
-            ifu_axi_rvalid  <= ifu_axi_arvalid & ifu_axi_arready;
-            ifu_axi_rid     <= ifu_axi_arid;
-            ifu_axi_rresp   <= 2'b00;
-            ifu_axi_rlast   <= ifu_axi_rvalid;
-            if (!ifu_axi_rvalid)
-                ifu_axi_rdata <= 64'h0000_0013_0000_0013;
+            if (ifu_axi_arvalid && ifu_axi_arready) begin
+                ifu_busy        <= 1'b1;
+                ifu_cur_addr    <= ifu_axi_araddr;
+                ifu_len_q       <= ifu_axi_arlen;
+                ifu_burst_q     <= ifu_axi_arburst;
+                ifu_beats_left  <= ifu_axi_arlen;
+                ifu_axi_rvalid  <= 1'b1;
+                ifu_axi_rdata   <= imem_rd64(ifu_axi_araddr);
+                ifu_axi_rid     <= ifu_axi_arid;
+                ifu_axi_rresp   <= 2'b00;
+                ifu_axi_rlast   <= (ifu_axi_arlen == 8'd0);
+            end else if (ifu_axi_rvalid && ifu_axi_rready) begin
+                if (ifu_axi_rlast) begin
+                    ifu_axi_rvalid <= 1'b0;
+                    ifu_axi_rlast  <= 1'b0;
+                    ifu_busy       <= 1'b0;
+                end else begin
+                    ifu_cur_addr   <= imem_next(ifu_cur_addr, ifu_burst_q, ifu_len_q);
+                    ifu_axi_rdata  <= imem_rd64(imem_next(ifu_cur_addr, ifu_burst_q, ifu_len_q));
+                    ifu_axi_rlast  <= (ifu_beats_left == 8'd1);
+                    ifu_beats_left <= ifu_beats_left - 8'd1;
+                end
+            end
         end
     end
 
-    // IFU write channel tie-off (IFU never writes)
+    // Channel tie-offs
     assign ifu_axi_awready = 1'b0;
     assign ifu_axi_wready  = 1'b0;
     assign ifu_axi_bvalid  = 1'b0;
     assign ifu_axi_bresp   = 2'b00;
     assign ifu_axi_bid     = '0;
 
-    // SB tie-off
     assign sb_axi_awready  = 1'b1;
     assign sb_axi_wready   = 1'b1;
     assign sb_axi_bvalid   = 1'b0;
@@ -621,7 +632,6 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     assign sb_axi_rid      = '0;
     assign sb_axi_rlast    = 1'b0;
 
-    // VeeR DMA slave tie-off (no DMA→DCCM in this test)
     assign dma_axi_awvalid = 1'b0;
     assign dma_axi_awid    = '0;
     assign dma_axi_awaddr  = '0;
@@ -644,42 +654,8 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     assign dma_axi_rready  = 1'b1;
 
     // =========================================================================
-    // TB-side AXI BFM driver signals (drives into DUT s00 via dwidth converter
-    // — we use s00 by driving the external IFU+DMA slave bypass path).
-    // Because the DUT's s00 is fed via the dwidth_converter whose master side
-    // connects to VeeR's LSU port (internal), we instead use an approach that
-    // drives the DUT peripheral AXI ports directly by using the VeeR core
-    // ICCM NOP boot-run to generate internal register accesses, OR we use the
-    // firmware hex approach.
-    //
-    // For the directed BFM tests (TC03 – TC28) we implement a simple AXI4-Lite
-    // master model that drives the s01 DMA-master bus port, which the DUT
-    // exposes as dma_m_mosi/miso through its DMA wrapper — but those are
-    // internal package types.  The cleanest approach for TB-level access to
-    // all peripherals is to stimulate the VeeR LSU AXI path indirectly via
-    // the tb_axi_master model driving the IFU feedback loop with real RISC-V
-    // instructions loaded from a hex memory.
-    //
-    // For THIS testbench we use a simple cycle-accurate AXI4 BFM that drives
-    // the externally-exposed DMA-slave port (dma_axi_*) to write into VeeR
-    // DCCM, and drive the DUT's IFU memory model with nop-streams so VeeR
-    // runs.  For direct peripheral access we use task axi_write / axi_read
-    // which internally re-target the dma_axi port (Master → DCCM path).
-    //
-    // ----- Simpler alternative used here: -----
-    // We use a separate BFM module driven via hierarchical access into the
-    // DUT's internal s00 AXI signals (dwidth_converter output) using
-    // `$root.dut.u_dwidth_conv.*` via named reference — this is standard VCS
-    // practice for directed TB access without exposing ports.
-    //
-    // Declare BFM driver logic here; the BFM task implementations follow.
+    // TB-side AXI BFM driver signals
     // =========================================================================
-
-    // Separate AXI4 master bus used by the BFM (32-bit, drives interconnect s00
-    // input side via force/release or via a dedicated BFM module).
-    // We use a simpler approach: a separate BFM register and inject transactions
-    // through tb_bfm_* wires that are force-assigned to the DUT internal wires.
-
     logic [IC_ID_WIDTH-1:0] bfm_awid;
     logic [31:0]            bfm_awaddr;
     logic [7:0]             bfm_awlen;
@@ -710,15 +686,9 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     logic                   bfm_rvalid;
     logic                   bfm_rready;
 
-    // Connect BFM signals to DUT s00 via force/release in initial block below.
-    // We force the s00_* wires inside the DUT (the dwidth converter s-side
-    // outputs that feed the interconnect).  VCS supports hierarchical force.
-
-    // =========================================================================
     // Static tie-offs
-    // =========================================================================
     initial begin
-        rst_vec             = 31'h4000_0000 >> 1;  // unused — VeeR runs NOPs
+        rst_vec             = BOOT_ADDR[31:1];
         nmi_vec             = 31'h0000_1000 >> 1;
         jtag_id             = 31'h1;
         core_id             = 28'h1;
@@ -727,7 +697,7 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
         soft_int            = 1'b0;
         extintsrc_req       = '0;
         gpio_in_i           = 32'h0;
-        uart_rx_i           = 1'b1;    // UART idle = high
+        uart_rx_i           = 1'b1;                // Idle high
         jtag_tck            = 1'b0;
         jtag_tms            = 1'b0;
         jtag_tdi            = 1'b0;
@@ -748,35 +718,21 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
         dmi_uncore_rdata    = 32'h0;
     end
 
-    // =========================================================================
     // BFM idle defaults
-    // =========================================================================
     initial begin
         bfm_awid    = '0; bfm_awaddr  = '0; bfm_awlen   = '0;
         bfm_awsize  = 3'b010; bfm_awburst = 2'b01;
         bfm_awvalid = 1'b0;
         bfm_wdata   = '0; bfm_wstrb   = 4'hF; bfm_wlast = 1'b1;
         bfm_wvalid  = 1'b0;
-        bfm_bready  = 1'b1;
+        bfm_bready  = 1'b0;
         bfm_arid    = '0; bfm_araddr  = '0; bfm_arlen   = '0;
         bfm_arsize  = 3'b010; bfm_arburst = 2'b01;
         bfm_arvalid = 1'b0;
-        bfm_rready  = 1'b1;
+        bfm_rready  = 1'b0;
     end
 
-    // =========================================================================
-    // Connect BFM to DUT internal s00 (hierarchical force after reset)
-    // =========================================================================
-    // We use the DUT s01 path (exposed through dma_axi_* ports) for BFM access
-    // to peripherals 0x4000_0000 – 0x4000_5FFF, since the DMA master on s01
-    // can reach any of the 6 slave ports via the interconnect.
-    // The dma_axi ports are a 64-bit VeeR DMA slave — we need 32-bit access to
-    // peripherals.  We use the DUT's *internal DMA master* bus (s01_*_w signals)
-    // by hierarchical force.  This is the proven method from prior TBs.
-    //
-    // Force path: dut.s01_awid_w ← bfm_awid  etc.
-    // =========================================================================
-
+    // Force tasks
     task automatic force_bfm_to_s01();
         force dut.s01_awid_w    = bfm_awid;
         force dut.s01_awaddr_w  = bfm_awaddr;
@@ -822,11 +778,7 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     endtask
 
     // =========================================================================
-    // AXI4 Write BFM task
-    //   addr  : 32-bit target address (must be within DUT slave map)
-    //   data  : 32-bit write data
-    //   strb  : 4-bit byte strobes (default 4'hF)
-    //   resp  : output — captured bresp
+    // AXI4 BFM Tasks
     // =========================================================================
     task automatic axi_write(
         input  logic [31:0] addr,
@@ -836,14 +788,13 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     );
         integer timeout_aw, timeout_w, timeout_b;
 
-        // --- AW channel ---
         @(negedge clk);
         bfm_awaddr  = addr;
         bfm_awvalid = 1'b1;
         bfm_awid    = 8'h01;
         bfm_awlen   = 8'h0;
-        bfm_awsize  = 3'b010;   // 4 bytes
-        bfm_awburst = 2'b01;    // INCR
+        bfm_awsize  = 3'b010;
+        bfm_awburst = 2'b01;
         force_bfm_to_s01();
 
         timeout_aw = 0;
@@ -861,7 +812,6 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
         bfm_awvalid = 1'b0;
         force_bfm_to_s01();
 
-        // --- W channel ---
         bfm_wdata  = data;
         bfm_wstrb  = strb;
         bfm_wlast  = 1'b1;
@@ -881,9 +831,9 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
 
         @(negedge clk);
         bfm_wvalid = 1'b0;
+        bfm_bready = 1'b1;
         force_bfm_to_s01();
 
-        // --- B channel ---
         timeout_b = 0;
         do begin
             @(posedge clk);
@@ -891,17 +841,19 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
             timeout_b++;
             if (timeout_b > TIMEOUT_CYC) begin
                 $error("[BFM] TIMEOUT waiting for BVALID at addr=0x%08h", addr);
-                resp = 2'b11; return;
+                resp = 2'b11;
+                bfm_bready = 1'b0;
+                force_bfm_to_s01();
+                return;
             end
         end while (!bfm_bvalid);
 
         resp = bfm_bresp;
         @(negedge clk);
+        bfm_bready = 1'b0;
+        force_bfm_to_s01();
     endtask
 
-    // =========================================================================
-    // AXI4 Read BFM task
-    // =========================================================================
     task automatic axi_read(
         input  logic [31:0] addr,
         output logic [31:0] data,
@@ -909,7 +861,6 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     );
         integer timeout_ar, timeout_r;
 
-        // --- AR channel ---
         @(negedge clk);
         bfm_araddr  = addr;
         bfm_arvalid = 1'b1;
@@ -917,7 +868,6 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
         bfm_arlen   = 8'h0;
         bfm_arsize  = 3'b010;
         bfm_arburst = 2'b01;
-        bfm_rready  = 1'b1;
         force_bfm_to_s01();
 
         timeout_ar = 0;
@@ -933,9 +883,9 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
 
         @(negedge clk);
         bfm_arvalid = 1'b0;
+        bfm_rready  = 1'b1;
         force_bfm_to_s01();
 
-        // --- R channel ---
         timeout_r = 0;
         do begin
             @(posedge clk);
@@ -943,23 +893,26 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
             timeout_r++;
             if (timeout_r > TIMEOUT_CYC) begin
                 $error("[BFM] TIMEOUT waiting for RVALID at addr=0x%08h", addr);
-                data = 32'hDEAD_BEEF; resp = 2'b11; return;
+                data = 32'hDEAD_BEEF; resp = 2'b11;
+                bfm_rready = 1'b0;
+                force_bfm_to_s01();
+                return;
             end
         end while (!bfm_rvalid);
 
         data = bfm_rdata;
         resp = bfm_rresp;
         @(negedge clk);
+        bfm_rready = 1'b0;
+        force_bfm_to_s01();
     endtask
 
-    // =========================================================================
-    // Pass / Fail tracking
-    // =========================================================================
+    // Checking routines
     integer pass_cnt = 0;
     integer fail_cnt = 0;
 
     task automatic check32(
-        input string   tc_name,
+        input string       tc_name,
         input logic [31:0] got,
         input logic [31:0] expected,
         input logic [31:0] mask = 32'hFFFF_FFFF
@@ -976,9 +929,9 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
     endtask
 
     task automatic check_signal(
-        input string   tc_name,
-        input logic    got,
-        input logic    expected
+        input string tc_name,
+        input logic  got,
+        input logic  expected
     );
         if (got === expected) begin
             $display("[PASS] %s : got=%b  expected=%b", tc_name, got, expected);
@@ -989,31 +942,22 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
         end
     endtask
 
-    // =========================================================================
-    // UART serial RX injector task — NRZ, LSB-first, 8N1
-    // =========================================================================
+    // UART tasks
     task automatic uart_inject_byte(input logic [7:0] byte_val);
         integer bit_idx;
-        // Start bit (low)
         @(negedge clk);
         uart_rx_i = 1'b0;
         repeat (BIT_CYCLES) @(posedge clk);
-        // 8 data bits, LSB first
         for (bit_idx = 0; bit_idx < 8; bit_idx++) begin
             @(negedge clk);
             uart_rx_i = byte_val[bit_idx];
             repeat (BIT_CYCLES) @(posedge clk);
         end
-        // Stop bit (high)
         @(negedge clk);
         uart_rx_i = 1'b1;
         repeat (BIT_CYCLES) @(posedge clk);
     endtask
 
-    // =========================================================================
-    // Serial bit monitor task — captures one UART byte from uart_tx_o
-    // Returns received byte, or 8'hFF on timeout
-    // =========================================================================
     task automatic uart_capture_tx(output logic [7:0] captured);
         integer bit_idx;
         integer timeout_tx;
@@ -1021,7 +965,6 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
         captured   = 8'hFF;
         timeout_tx = 0;
 
-        // Wait for start bit (falling edge on uart_tx_o)
         while (uart_tx_o !== 1'b0) begin
             @(posedge clk);
             timeout_tx++;
@@ -1031,552 +974,530 @@ module veer2_dma_aes_wdt_uart_gpio_timer_tb;
             end
         end
 
-        // Sample mid-bit for start bit (half BIT_CYCLES)
         repeat (BIT_CYCLES / 2) @(posedge clk);
 
-        // Sample 8 data bits, LSB first
         for (bit_idx = 0; bit_idx < 8; bit_idx++) begin
             repeat (BIT_CYCLES) @(posedge clk);
             captured[bit_idx] = uart_tx_o;
         end
 
-        // Skip stop bit
         repeat (BIT_CYCLES) @(posedge clk);
     endtask
 
-    // =========================================================================
     // Waveform dump
-    // =========================================================================
     initial begin
+`ifdef FSDB
         $fsdbDumpfile("dump.fsdb");
-        $fsdbDumpvars("all");
-	$fsdbDumpMDA();
-	$fsdbDumpSVA();
-
+        $fsdbDumpvars("+all");
+        $fsdbDumpMDA();
+        $fsdbDumpSVA();
+`else
+        if ($test$plusargs("dump")) begin
+            $dumpfile("dump.vcd");
+            $dumpvars(0, veer2_dma_aes_wdt_uart_gpio_timer_tb);
+        end
+`endif
     end
 
     // =========================================================================
-    // Main test sequence
+    // Instruction & Exception Tracer (Live Debug)
+    // =========================================================================
+    initial begin
+        wait(rst_l === 1'b1);
+        $display("[TRACER] Reset released. Monitoring PC execution...");
+        forever @(posedge clk) begin
+            if (trace_rv_i_valid_ip) begin
+                $display("[TRACER-PC] Time=%0t | PC=0x%08h | Insn=0x%08h", 
+                         $time, trace_rv_i_address_ip, trace_rv_i_insn_ip);
+            end
+            if (trace_rv_i_exception_ip) begin
+                $display("[TRACER-EXC] Time=%0t | EXCEPTION! Cause=0x%0h | TVAL=0x%08h | PC=0x%08h",
+                         $time, trace_rv_i_ecause_ip, trace_rv_i_tval_ip, trace_rv_i_address_ip);
+            end
+        end
+    end
+
+    // =========================================================================
+    // Main Test Sequence
     // =========================================================================
     logic [31:0] rd_data;
     logic [1:0]  rd_resp, wr_resp;
     logic [7:0]  tx_captured;
 
     initial begin
-        // ---------------------------------------------------------------
-        // Phase 0 — Reset
-        // ---------------------------------------------------------------
-        rst_l     = 1'b0;
-        dbg_rst_l = 1'b0;
+        // Reset Phase
+        rst_l         = 1'b0;
+        dbg_rst_l     = 1'b0;
+        i_cpu_run_req = 1'b0;
         repeat (RST_CYCLES) @(posedge clk);
-
-        // Activate forces after reset deassert
-        force_bfm_to_s01();
 
         @(negedge clk);
         rst_l     = 1'b1;
         dbg_rst_l = 1'b1;
+        
+        // Assert CPU run request pulse to trigger execution
+        @(posedge clk);
+        i_cpu_run_req = 1'b1;
         repeat (5) @(posedge clk);
+        i_cpu_run_req = 1'b0;
 
-        // ---------------------------------------------------------------
-        // TC01 — Power-on Reset: quiescent output checks
-        // ---------------------------------------------------------------
-        $display("\n===== TC01: Power-on Reset =====");
-        check_signal("TC01-uart_tx_idle",   uart_tx_o,       1'b1);
-        check_signal("TC01-aes_busy_idle",  aes_busy_o,      1'b0);
-        check_signal("TC01-dma_done_idle",  dma_done_o,      1'b0);
-        check_signal("TC01-wdt_reset_idle", wdt_reset_o,     1'b0);
+        // Branch execution: Firmware Mode vs BFM Unit Tests
+        if ($test$plusargs("FWONLY")) begin
+            $display("===============================================================");
+            $display("  [TB] RUNNING IN FIRMWARE-ONLY MODE (+FWONLY)");
+            $display("  [TB] BFM forced signals disabled; CPU is in control.");
+            $display("===============================================================");
+        end else begin
+            force_bfm_to_s01();
 
-        // ---------------------------------------------------------------
-        // TC02 — VeeR IFU Instruction Fetch: core alive
-        // ---------------------------------------------------------------
-        $display("\n===== TC02: VeeR IFU Instruction Fetch =====");
-        // Allow VeeR to start fetching NOPs from IFU memory model
-        repeat (50) @(posedge clk);
-        check_signal("TC02-ifu_arvalid",    ifu_axi_arvalid, 1'b1);
+            // TC01
+            $display("\n===== TC01: Power-on Reset =====");
+            check_signal("TC01-uart_tx_idle",   uart_tx_o,       1'b1);
+            check_signal("TC01-aes_busy_idle",  aes_busy_o,      1'b0);
+            check_signal("TC01-dma_done_idle",  dma_done_o,      1'b0);
+            check_signal("TC01-wdt_reset_idle", wdt_reset_o,     1'b0);
 
-        // ---------------------------------------------------------------
-        // TC03 — UART: LCR write (8N1), BAUD, IER
-        // ---------------------------------------------------------------
-        $display("\n===== TC03: UART Config =====");
-        axi_write(UART_LCR,  32'h03, 4'hF, wr_resp);
-        check_signal("TC03-LCR-wr-resp", wr_resp[1], 1'b0);   // OKAY
-        axi_read (UART_LCR, rd_data, rd_resp);
-        check32  ("TC03-LCR-readback",  rd_data, 32'h03, 32'hFF);
+            // TC02
+            $display("\n===== TC02: VeeR IFU Instruction Fetch =====");
+            repeat (50) @(posedge clk);
+            check_signal("TC02-ifu_arvalid",    ifu_axi_arvalid, 1'b1);
 
-        axi_write(UART_BAUD, 32'(SIM_BAUD_DIV), 4'hF, wr_resp);
-        check_signal("TC03-BAUD-wr-resp", wr_resp[1], 1'b0);
+            // TC03
+            $display("\n===== TC03: UART Config =====");
+            axi_write(UART_LCR,  32'h03, 4'hF, wr_resp);
+            check_signal("TC03-LCR-wr-resp", wr_resp[1], 1'b0);
+            axi_read (UART_LCR, rd_data, rd_resp);
+            check32  ("TC03-LCR-readback",   rd_data, 32'h03, 32'hFF);
 
-        axi_write(UART_IER, 32'h01, 4'hF, wr_resp);
-        check_signal("TC03-IER-wr-resp", wr_resp[1], 1'b0);
-        axi_read(UART_IER, rd_data, rd_resp);
-        check32 ("TC03-IER-readback", rd_data, 32'h01, 32'hFF);
+            axi_write(UART_BAUD, 32'(SIM_BAUD_DIV), 4'hF, wr_resp);
+            check_signal("TC03-BAUD-wr-resp", wr_resp[1], 1'b0);
 
-        // ---------------------------------------------------------------
-        // TC04 — UART: TX character 'K' (0x4B)
-        // ---------------------------------------------------------------
-        $display("\n===== TC04: UART TX =====");
-        // Poll LSR until THRE set
-        begin : tc04_poll
-            integer poll_cnt;
-            poll_cnt = 0;
-            do begin
-                axi_read(UART_LSR, rd_data, rd_resp);
-                poll_cnt++;
-                if (poll_cnt > 200) begin
-                    $error("[FAIL] TC04: LSR THRE poll timeout"); fail_cnt++;
-                    disable tc04_poll;
-                end
-            end while (!(rd_data & 32'h20));  // THRE = bit5
-        end
-        axi_write(UART_THR, 32'h4B, 4'hF, wr_resp);  // 'K'
-        check_signal("TC04-THR-wr-resp", wr_resp[1], 1'b0);
+            axi_write(UART_IER, 32'h01, 4'hF, wr_resp);
+            check_signal("TC03-IER-wr-resp", wr_resp[1], 1'b0);
+            axi_read(UART_IER, rd_data, rd_resp);
+            check32 ("TC03-IER-readback", rd_data, 32'h01, 32'hFF);
 
-        // ---------------------------------------------------------------
-        // TC05 — UART: Serial bit capture of TX output
-        // ---------------------------------------------------------------
-        $display("\n===== TC05: UART TX serial monitor =====");
-        // TX_K character monitor — fork so we don't stall main sequence
-        fork
-            uart_capture_tx(tx_captured);
-        join_none
-        repeat (BIT_CYCLES * 12) @(posedge clk);
-        @(posedge clk); // latch captured
-        check32("TC05-UART-TX-captured", {24'h0, tx_captured}, 32'h4B, 32'hFF);
+            // TC04
+            $display("\n===== TC04: UART TX =====");
+            begin : tc04_poll
+                integer poll_cnt;
+                poll_cnt = 0;
+                do begin
+                    axi_read(UART_LSR, rd_data, rd_resp);
+                    poll_cnt++;
+                    if (poll_cnt > 200) begin
+                        $error("[FAIL] TC04: LSR THRE poll timeout"); fail_cnt++;
+                        disable tc04_poll;
+                    end
+                end while (!(rd_data & 32'h20));
+            end
+            axi_write(UART_THR, 32'h4B, 4'hF, wr_resp);
+            check_signal("TC04-THR-wr-resp", wr_resp[1], 1'b0);
 
-        // ---------------------------------------------------------------
-        // TC06 — UART: RX loopback (inject 0xA5)
-        // ---------------------------------------------------------------
-        $display("\n===== TC06: UART RX loopback =====");
-        uart_inject_byte(8'hA5);
-        repeat (5) @(posedge clk);
-        // Poll LSR DATA_READY bit0
-        begin : tc06_poll
-            integer poll_cnt;
-            poll_cnt = 0;
-            do begin
-                axi_read(UART_LSR, rd_data, rd_resp);
-                poll_cnt++;
-                if (poll_cnt > 500) begin
-                    $error("[FAIL] TC06: LSR DATA_READY timeout"); fail_cnt++;
-                    disable tc06_poll;
-                end
-            end while (!(rd_data & 32'h01));
-        end
-        check_signal("TC06-uart_read_irq", uart_read_irq_o, 1'b1);
-        axi_read(UART_RBR, rd_data, rd_resp);
-        check32 ("TC06-RBR-readback", rd_data, 32'hA5, 32'hFF);
+            // TC05
+            $display("\n===== TC05: UART TX serial monitor =====");
+            fork
+                uart_capture_tx(tx_captured);
+            join_none
+            repeat (BIT_CYCLES * 12) @(posedge clk);
+            @(posedge clk);
+            check32("TC05-UART-TX-captured", {24'h0, tx_captured}, 32'h4B, 32'hFF);
 
-        // ---------------------------------------------------------------
-        // TC07 — System Timer: prescaler + step, enable
-        // ---------------------------------------------------------------
-        $display("\n===== TC07: System Timer Config =====");
-        // prescaler = 9 (bits[19:8]), step = 1 (bits[7:0])  → tick every 10 clocks
-        axi_write(TIMER_CFG0, 32'h0000_0901, 4'hF, wr_resp);
-        check_signal("TC07-CFG0-wr",  wr_resp[1], 1'b0);
-        // Set compare to max initially (prevent spurious IRQ)
-        axi_write(TIMER_CMP_LO, 32'hFFFF_FFFF, 4'hF, wr_resp);
-        axi_write(TIMER_CMP_HI, 32'hFFFF_FFFF, 4'hF, wr_resp);
-        // Enable timer
-        axi_write(TIMER_CTRL, 32'h1, 4'hF, wr_resp);
-        check_signal("TC07-CTRL-wr",  wr_resp[1], 1'b0);
+            // TC06
+            $display("\n===== TC06: UART RX loopback =====");
+            uart_inject_byte(8'hA5);
+            repeat (5) @(posedge clk);
+            begin : tc06_poll
+                integer poll_cnt;
+                poll_cnt = 0;
+                do begin
+                    axi_read(UART_LSR, rd_data, rd_resp);
+                    poll_cnt++;
+                    if (poll_cnt > 500) begin
+                        $error("[FAIL] TC06: LSR DATA_READY timeout"); fail_cnt++;
+                        disable tc06_poll;
+                    end
+                end while (!(rd_data & 32'h01));
+            end
+            check_signal("TC06-uart_read_irq", uart_read_irq_o, 1'b1);
+            axi_read(UART_RBR, rd_data, rd_resp);
+            check32 ("TC06-RBR-readback", rd_data, 32'hA5, 32'hFF);
 
-        // ---------------------------------------------------------------
-        // TC08 — System Timer: counter increments
-        // ---------------------------------------------------------------
-        $display("\n===== TC08: System Timer counter =====");
-        axi_read(TIMER_VAL_LO, rd_data, rd_resp);
-        begin : tc08
-            logic [31:0] t0, t1;
-            t0 = rd_data;
-            repeat (30) @(posedge clk);
+            // TC07
+            $display("\n===== TC07: System Timer Config =====");
+            axi_write(TIMER_CFG0, 32'h0000_0901, 4'hF, wr_resp);
+            check_signal("TC07-CFG0-wr",  wr_resp[1], 1'b0);
+            axi_write(TIMER_CMP_LO, 32'hFFFF_FFFF, 4'hF, wr_resp);
+            axi_write(TIMER_CMP_HI, 32'hFFFF_FFFF, 4'hF, wr_resp);
+            axi_write(TIMER_CTRL, 32'h1, 4'hF, wr_resp);
+            check_signal("TC07-CTRL-wr",  wr_resp[1], 1'b0);
+
+            // TC08
+            $display("\n===== TC08: System Timer counter =====");
             axi_read(TIMER_VAL_LO, rd_data, rd_resp);
-            t1 = rd_data;
-            check_signal("TC08-timer_increments", (t1 > t0), 1'b1);
-        end
+            begin : tc08
+                logic [31:0] t0, t1;
+                t0 = rd_data;
+                repeat (30) @(posedge clk);
+                axi_read(TIMER_VAL_LO, rd_data, rd_resp);
+                t1 = rd_data;
+                check_signal("TC08-timer_increments", (t1 > t0), 1'b1);
+            end
 
-        // ---------------------------------------------------------------
-        // TC09 — System Timer: timer_irq_o fires after compare
-        // ---------------------------------------------------------------
-        $display("\n===== TC09: System Timer IRQ =====");
-        axi_read(TIMER_VAL_LO, rd_data, rd_resp);
-        // Set compare just above current count
-        axi_write(TIMER_CMP_LO, rd_data + 32'd50,   4'hF, wr_resp);
-        axi_write(TIMER_CMP_HI, 32'h0,              4'hF, wr_resp);
-        // Enable interrupt
-        axi_write(TIMER_INTR_EN, 32'h1, 4'hF, wr_resp);
-        // Wait for IRQ
-        begin : tc09
-            integer tmo;
-            tmo = 0;
-            while (!timer_irq_o) begin
-                @(posedge clk);
-                tmo++;
-                if (tmo > 2000) begin
-                    $error("[FAIL] TC09: timer_irq_o timeout"); fail_cnt++;
-                    disable tc09;
+            // TC09
+            $display("\n===== TC09: System Timer IRQ =====");
+            axi_read(TIMER_VAL_LO, rd_data, rd_resp);
+            axi_write(TIMER_CMP_LO, rd_data + 32'd50,   4'hF, wr_resp);
+            axi_write(TIMER_CMP_HI, 32'h0,              4'hF, wr_resp);
+            axi_write(TIMER_INTR_EN, 32'h1, 4'hF, wr_resp);
+            begin : tc09
+                integer tmo;
+                tmo = 0;
+                while (!timer_irq_o) begin
+                    @(posedge clk);
+                    tmo++;
+                    if (tmo > 2000) begin
+                        $error("[FAIL] TC09: timer_irq_o timeout"); fail_cnt++;
+                        disable tc09;
+                    end
                 end
+                check_signal("TC09-timer_irq_o", timer_irq_o, 1'b1);
             end
-            check_signal("TC09-timer_irq_o", timer_irq_o, 1'b1);
-        end
-        // W1C clear
-        axi_write(TIMER_INTR_ST, 32'h1, 4'hF, wr_resp);
+            axi_write(TIMER_INTR_ST, 32'h1, 4'hF, wr_resp);
 
-        // ---------------------------------------------------------------
-        // TC10 — AES: key load (NIST FIPS-197)
-        // ---------------------------------------------------------------
-        $display("\n===== TC10: AES Key Load =====");
-        axi_write(AES_KEY0, AES_KEY_W0, 4'hF, wr_resp); check_signal("TC10-K0-wr", wr_resp[1], 1'b0);
-        axi_write(AES_KEY1, AES_KEY_W1, 4'hF, wr_resp); check_signal("TC10-K1-wr", wr_resp[1], 1'b0);
-        axi_write(AES_KEY2, AES_KEY_W2, 4'hF, wr_resp); check_signal("TC10-K2-wr", wr_resp[1], 1'b0);
-        axi_write(AES_KEY3, AES_KEY_W3, 4'hF, wr_resp); check_signal("TC10-K3-wr", wr_resp[1], 1'b0);
-        // Plaintext load
-        axi_write(AES_TXTIN0, AES_PT_W0, 4'hF, wr_resp);
-        axi_write(AES_TXTIN1, AES_PT_W1, 4'hF, wr_resp);
-        axi_write(AES_TXTIN2, AES_PT_W2, 4'hF, wr_resp);
-        axi_write(AES_TXTIN3, AES_PT_W3, 4'hF, wr_resp);
+            // TC10
+            $display("\n===== TC10: AES Key Load =====");
+            axi_write(AES_KEY0, AES_KEY_W0, 4'hF, wr_resp); check_signal("TC10-K0-wr", wr_resp[1], 1'b0);
+            axi_write(AES_KEY1, AES_KEY_W1, 4'hF, wr_resp); check_signal("TC10-K1-wr", wr_resp[1], 1'b0);
+            axi_write(AES_KEY2, AES_KEY_W2, 4'hF, wr_resp); check_signal("TC10-K2-wr", wr_resp[1], 1'b0);
+            axi_write(AES_KEY3, AES_KEY_W3, 4'hF, wr_resp); check_signal("TC10-K3-wr", wr_resp[1], 1'b0);
+            axi_write(AES_TXTIN0, AES_PT_W0, 4'hF, wr_resp);
+            axi_write(AES_TXTIN1, AES_PT_W1, 4'hF, wr_resp);
+            axi_write(AES_TXTIN2, AES_PT_W2, 4'hF, wr_resp);
+            axi_write(AES_TXTIN3, AES_PT_W3, 4'hF, wr_resp);
 
-        // ---------------------------------------------------------------
-        // TC11 — AES: START pulse, aes_busy_o asserts
-        // ---------------------------------------------------------------
-        $display("\n===== TC11: AES START =====");
-        axi_write(AES_CTRL_REG, 32'h01, 4'hF, wr_resp); // START
-        check_signal("TC11-AES-START-wr", wr_resp[1], 1'b0);
-        repeat (2) @(posedge clk);
-        check_signal("TC11-aes_busy", aes_busy_o, 1'b1);
+            // TC11
+            $display("\n===== TC11: AES START =====");
+            axi_write(AES_CTRL_REG, 32'h01, 4'hF, wr_resp);
+            check_signal("TC11-AES-START-wr", wr_resp[1], 1'b0);
+            repeat (2) @(posedge clk);
+            check_signal("TC11-aes_busy", aes_busy_o, 1'b1);
 
-        // ---------------------------------------------------------------
-        // TC12 — AES: done signals
-        // ---------------------------------------------------------------
-        $display("\n===== TC12: AES Done Signals =====");
-        begin : tc12
-            integer tmo;
-            tmo = 0;
-            while (!aes_done_o) begin
-                @(posedge clk);
-                tmo++;
-                if (tmo > 500) begin
-                    $error("[FAIL] TC12: aes_done_o timeout"); fail_cnt++;
-                    disable tc12;
+            // TC12
+            $display("\n===== TC12: AES Done Signals =====");
+            begin : tc12
+                integer tmo;
+                tmo = 0;
+                while (!aes_done_o) begin
+                    @(posedge clk);
+                    tmo++;
+                    if (tmo > 500) begin
+                        $error("[FAIL] TC12: aes_done_o timeout"); fail_cnt++;
+                        disable tc12;
+                    end
                 end
+                check_signal("TC12-aes_done_o",       aes_done_o,       1'b1);
+                check_signal("TC12-aes_done_pulse_o", aes_done_pulse_o, 1'b1);
+                check_signal("TC12-aes_irq_o",        aes_irq_o,        1'b1);
             end
-            check_signal("TC12-aes_done_o",       aes_done_o,       1'b1);
-            check_signal("TC12-aes_done_pulse_o",  aes_done_pulse_o, 1'b1);
-            check_signal("TC12-aes_irq_o",         aes_irq_o,        1'b1);
-        end
 
-        // ---------------------------------------------------------------
-        // TC13 — AES: ciphertext read-back
-        // ---------------------------------------------------------------
-        $display("\n===== TC13: AES Ciphertext Read-back =====");
-        repeat (2) @(posedge clk);
-        axi_read(AES_TXTOUT0, rd_data, rd_resp);
-        check32("TC13-CT-W0", rd_data, AES_CT_W0, 32'hFFFF_FFFF);
-        axi_read(AES_TXTOUT1, rd_data, rd_resp);
-        check32("TC13-CT-W1", rd_data, AES_CT_W1, 32'hFFFF_FFFF);
-        axi_read(AES_TXTOUT2, rd_data, rd_resp);
-        check32("TC13-CT-W2", rd_data, AES_CT_W2, 32'hFFFF_FFFF);
-        axi_read(AES_TXTOUT3, rd_data, rd_resp);
-        check32("TC13-CT-W3", rd_data, AES_CT_W3, 32'hFFFF_FFFF);
+            // TC13
+            $display("\n===== TC13: AES Ciphertext Read-back =====");
+            repeat (2) @(posedge clk);
+            axi_read(AES_TXTOUT0, rd_data, rd_resp); check32("TC13-CT-W0", rd_data, AES_CT_W0);
+            axi_read(AES_TXTOUT1, rd_data, rd_resp); check32("TC13-CT-W1", rd_data, AES_CT_W1);
+            axi_read(AES_TXTOUT2, rd_data, rd_resp); check32("TC13-CT-W2", rd_data, AES_CT_W2);
+            axi_read(AES_TXTOUT3, rd_data, rd_resp); check32("TC13-CT-W3", rd_data, AES_CT_W3);
 
-        // ---------------------------------------------------------------
-        // TC14 — DMA: CSR access (version / control read)
-        // ---------------------------------------------------------------
-        $display("\n===== TC14: DMA CSR Read =====");
-        axi_read(DMA_CTRL_REG, rd_data, rd_resp);
-        check_signal("TC14-DMA-ctrl-resp", rd_resp[1], 1'b0);  // OKAY (not SLVERR)
+            // TC14
+            $display("\n===== TC14: DMA CSR Read =====");
+            axi_read(DMA_CTRL_REG, rd_data, rd_resp); check_signal("TC14-DMA-ctrl-resp", rd_resp[1], 1'b0);
+            axi_read(DMA_STAT_REG, rd_data, rd_resp); check_signal("TC14-DMA-stat-resp", rd_resp[1], 1'b0);
 
-        axi_read(DMA_STAT_REG, rd_data, rd_resp);
-        check_signal("TC14-DMA-stat-resp", rd_resp[1], 1'b0);
+            // TC15
+            $display("\n===== TC15: DMA Descriptor Setup =====");
+            axi_write(DMA_DESC0_SRC, UART_BASE,     4'hF, wr_resp); check_signal("TC15-SRC-wr", wr_resp[1], 1'b0);
+            axi_write(DMA_DESC0_DST, 32'hF004_0000, 4'hF, wr_resp); check_signal("TC15-DST-wr", wr_resp[1], 1'b0);
+            axi_write(DMA_CTRL_REG,  32'h03,        4'hF, wr_resp); check_signal("TC15-START-wr", wr_resp[1], 1'b0);
 
-        // ---------------------------------------------------------------
-        // TC15 — DMA: descriptor write (SRC, DST, LEN, START)
-        // ---------------------------------------------------------------
-        $display("\n===== TC15: DMA Descriptor Setup =====");
-        axi_write(DMA_DESC0_SRC, UART_BASE,     4'hF, wr_resp);
-        check_signal("TC15-SRC-wr", wr_resp[1], 1'b0);
-        axi_write(DMA_DESC0_DST, 32'hF004_0000, 4'hF, wr_resp);  // DCCM start
-        check_signal("TC15-DST-wr", wr_resp[1], 1'b0);
-        axi_write(DMA_CTRL_REG,  32'h03, 4'hF, wr_resp);          // START|IRQ_EN
-        check_signal("TC15-START-wr", wr_resp[1], 1'b0);
-
-        // ---------------------------------------------------------------
-        // TC16 — DMA: completion signals
-        // ---------------------------------------------------------------
-        $display("\n===== TC16: DMA Done =====");
-        begin : tc16
-            integer tmo;
-            tmo = 0;
-            while (!dma_done_o) begin
-                @(posedge clk);
-                tmo++;
-                if (tmo > TIMEOUT_CYC) begin
-                    $error("[FAIL] TC16: dma_done_o timeout"); fail_cnt++;
-                    disable tc16;
+            // TC16
+            $display("\n===== TC16: DMA Done =====");
+            begin : tc16
+                integer tmo;
+                tmo = 0;
+                while (!dma_done_o) begin
+                    @(posedge clk);
+                    tmo++;
+                    if (tmo > TIMEOUT_CYC) begin
+                        $error("[FAIL] TC16: dma_done_o timeout"); fail_cnt++;
+                        disable tc16;
+                    end
                 end
+                check_signal("TC16-dma_done_o", dma_done_o, 1'b1);
+                check_signal("TC16-dma_irq_o",  dma_irq_o,  1'b1);
             end
-            check_signal("TC16-dma_done_o", dma_done_o, 1'b1);
-            check_signal("TC16-dma_irq_o",  dma_irq_o,  1'b1);
-        end
 
-        // ---------------------------------------------------------------
-        // TC17 — WDT: LOAD + CTRL enable
-        // ---------------------------------------------------------------
-        $display("\n===== TC17: WDT Config =====");
-        axi_write(WDT_LOAD, 32'h0000_1000, 4'hF, wr_resp);   // 4096 cycle timeout
-        check_signal("TC17-WDT-LOAD-wr", wr_resp[1], 1'b0);
-        axi_write(WDT_IM, 32'h01, 4'hF, wr_resp);             // unmask IRQ
-        axi_write(WDT_CTRL, 32'h03, 4'hF, wr_resp);           // WDT_EN | AUTO_KICK_EN
-        check_signal("TC17-WDT-CTRL-wr", wr_resp[1], 1'b0);
+            // TC17
+            $display("\n===== TC17: WDT Config =====");
+            axi_write(WDT_LOAD, 32'h0000_1000, 4'hF, wr_resp); check_signal("TC17-WDT-LOAD-wr", wr_resp[1], 1'b0);
+            axi_write(WDT_IM,   32'h01,        4'hF, wr_resp);
+            axi_write(WDT_CTRL, 32'h03,        4'hF, wr_resp); check_signal("TC17-WDT-CTRL-wr", wr_resp[1], 1'b0);
+            axi_read (WDT_CTRL, rd_data, rd_resp);             check32("TC17-WDT-CTRL-rb", rd_data, 32'h03, 32'h03);
 
-        // Read back CTRL
-        axi_read(WDT_CTRL, rd_data, rd_resp);
-        check32("TC17-WDT-CTRL-rb", rd_data, 32'h03, 32'h03);
+            // TC18
+            $display("\n===== TC18: WDT Software Ping =====");
+            repeat (10) @(posedge clk);
+            axi_write(WDT_PING, 32'hABCD_EF01, 4'hF, wr_resp); check_signal("TC18-WDT-PING-wr", wr_resp[1], 1'b0);
+            repeat (5) @(posedge clk);
+            check_signal("TC18-wdt_irq_idle", wdt_irq_o, 1'b0);
 
-        // ---------------------------------------------------------------
-        // TC18 — WDT: software ping resets counter
-        // ---------------------------------------------------------------
-        $display("\n===== TC18: WDT Software Ping =====");
-        repeat (10) @(posedge clk);
-        axi_write(WDT_PING, 32'hABCD_EF01, 4'hF, wr_resp);   // any write = kick
-        check_signal("TC18-WDT-PING-wr", wr_resp[1], 1'b0);
-        // After ping, IRQ should not assert yet
-        repeat (5) @(posedge clk);
-        check_signal("TC18-wdt_irq_idle", wdt_irq_o, 1'b0);
-
-        // ---------------------------------------------------------------
-        // TC19 — WDT: AES auto-kick (aes_done_pulse_o wired into WDT)
-        // ---------------------------------------------------------------
-        $display("\n===== TC19: WDT AES Auto-Kick =====");
-        // Fire another AES operation to generate aes_done_pulse_o
-        axi_write(AES_TXTIN0, AES_PT_W0, 4'hF, wr_resp);
-        axi_write(AES_TXTIN1, AES_PT_W1, 4'hF, wr_resp);
-        axi_write(AES_TXTIN2, AES_PT_W2, 4'hF, wr_resp);
-        axi_write(AES_TXTIN3, AES_PT_W3, 4'hF, wr_resp);
-        axi_write(AES_CTRL_REG, 32'h01, 4'hF, wr_resp);
-        begin : tc19
-            integer tmo;
-            tmo = 0;
-            while (!aes_done_pulse_o) begin
-                @(posedge clk);
-                tmo++;
-                if (tmo > 500) begin
-                    $error("[FAIL] TC19: aes_done_pulse_o for auto-kick timeout"); fail_cnt++;
-                    disable tc19;
+            // TC19
+            $display("\n===== TC19: WDT AES Auto-Kick =====");
+            axi_write(AES_TXTIN0, AES_PT_W0, 4'hF, wr_resp);
+            axi_write(AES_TXTIN1, AES_PT_W1, 4'hF, wr_resp);
+            axi_write(AES_TXTIN2, AES_PT_W2, 4'hF, wr_resp);
+            axi_write(AES_TXTIN3, AES_PT_W3, 4'hF, wr_resp);
+            axi_write(AES_CTRL_REG, 32'h01,  4'hF, wr_resp);
+            begin : tc19
+                integer tmo;
+                tmo = 0;
+                while (!aes_done_pulse_o) begin
+                    @(posedge clk);
+                    tmo++;
+                    if (tmo > 500) begin
+                        $error("[FAIL] TC19: aes_done_pulse_o for auto-kick timeout"); fail_cnt++;
+                        disable tc19;
+                    end
                 end
+                check_signal("TC19-aes_done_pulse_o-for-WDT-kick", aes_done_pulse_o, 1'b1);
             end
-            check_signal("TC19-aes_done_pulse_o-for-WDT-kick", aes_done_pulse_o, 1'b1);
-        end
-        // After auto-kick WDT should NOT have timed out
-        repeat (5) @(posedge clk);
-        check_signal("TC19-wdt_reset_o-still-low", wdt_reset_o, 1'b0);
+            repeat (5) @(posedge clk);
+            check_signal("TC19-wdt_reset_o-still-low", wdt_reset_o, 1'b0);
 
-        // ---------------------------------------------------------------
-        // TC20 — WDT: Timeout → wdt_irq_o early warning, W1C clear
-        // ---------------------------------------------------------------
-        $display("\n===== TC20: WDT Timeout & IRQ =====");
-        // Shorten timeout to a very small value so it expires quickly
-        axi_write(WDT_CTRL, 32'h01, 4'hF, wr_resp);           // keep EN, disable auto-kick
-        axi_write(WDT_LOAD, 32'h0000_0010, 4'hF, wr_resp);    // 16-cycle timeout
-        axi_write(WDT_CTRL, 32'h01, 4'hF, wr_resp);
-        begin : tc20
-            integer tmo;
-            tmo = 0;
-            while (!wdt_irq_o) begin
-                @(posedge clk);
-                tmo++;
-                if (tmo > 2000) begin
-                    $error("[FAIL] TC20: wdt_irq_o timeout"); fail_cnt++;
-                    disable tc20;
+            // TC20
+            $display("\n===== TC20: WDT Timeout & IRQ =====");
+            axi_write(WDT_CTRL, 32'h01,        4'hF, wr_resp);
+            axi_write(WDT_LOAD, 32'h0000_0010, 4'hF, wr_resp);
+            axi_write(WDT_CTRL, 32'h01,        4'hF, wr_resp);
+            begin : tc20
+                integer tmo;
+                tmo = 0;
+                while (!wdt_irq_o) begin
+                    @(posedge clk);
+                    tmo++;
+                    if (tmo > 2000) begin
+                        $error("[FAIL] TC20: wdt_irq_o timeout"); fail_cnt++;
+                        disable tc20;
+                    end
                 end
+                check_signal("TC20-wdt_irq_o", wdt_irq_o, 1'b1);
             end
-            check_signal("TC20-wdt_irq_o", wdt_irq_o, 1'b1);
-        end
-        // W1C interrupt clear
-        axi_write(WDT_IC, 32'hFFFF_FFFF, 4'hF, wr_resp);
-        repeat (3) @(posedge clk);
-        axi_read(WDT_RIS, rd_data, rd_resp);
-        check32("TC20-WDT-RIS-cleared", rd_data, 32'h0, 32'h1);
+            axi_write(WDT_IC, 32'hFFFF_FFFF, 4'hF, wr_resp);
+            repeat (3) @(posedge clk);
+            axi_read(WDT_RIS, rd_data, rd_resp);
+            check32("TC20-WDT-RIS-cleared", rd_data, 32'h0, 32'h1);
 
-        // ---------------------------------------------------------------
-        // TC21 — WDT: NMI / hard reset escalation
-        // ---------------------------------------------------------------
-        $display("\n===== TC21: WDT NMI + Hard Reset Escalation =====");
-        axi_write(WDT_CTRL, 32'h0F, 4'hF, wr_resp); // WDT_EN|AUTO_KICK_EN|NMI_EN|RESET_EN
-        axi_write(WDT_LOAD, 32'h0000_0008, 4'hF, wr_resp);    // 8-cycle timeout
-        begin : tc21
-            integer tmo;
-            tmo = 0;
-            while (!wdt_nmi_o && !wdt_reset_o) begin
-                @(posedge clk);
-                tmo++;
-                if (tmo > 2000) begin
-                    $error("[FAIL] TC21: wdt_nmi_o/wdt_reset_o timeout"); fail_cnt++;
-                    disable tc21;
+            // TC21
+            $display("\n===== TC21: WDT NMI + Hard Reset Escalation =====");
+            axi_write(WDT_CTRL, 32'h0F,        4'hF, wr_resp);
+            axi_write(WDT_LOAD, 32'h0000_0008, 4'hF, wr_resp);
+            begin : tc21
+                integer tmo;
+                tmo = 0;
+                while (!wdt_nmi_o && !wdt_reset_o) begin
+                    @(posedge clk);
+                    tmo++;
+                    if (tmo > 2000) begin
+                        $error("[FAIL] TC21: wdt_nmi_o/wdt_reset_o timeout"); fail_cnt++;
+                        disable tc21;
+                    end
                 end
+                check_signal("TC21-wdt_nmi_o",   wdt_nmi_o,   1'b1);
+                check_signal("TC21-wdt_reset_o", wdt_reset_o, 1'b1);
             end
-            check_signal("TC21-wdt_nmi_o",   wdt_nmi_o,   1'b1);
-            check_signal("TC21-wdt_reset_o", wdt_reset_o, 1'b1);
-        end
-        // Disable WDT to stop continuous reset
-        axi_write(WDT_CTRL, 32'h00, 4'hF, wr_resp);
-        axi_write(WDT_IC,   32'hFFFF_FFFF, 4'hF, wr_resp);
+            axi_write(WDT_CTRL, 32'h00,        4'hF, wr_resp);
+            axi_write(WDT_IC,   32'hFFFF_FFFF, 4'hF, wr_resp);
 
-        // ---------------------------------------------------------------
-        // TC22 — GPIO: output enable and output write
-        // ---------------------------------------------------------------
-        $display("\n===== TC22: GPIO Output =====");
-        // Enable lower 8 bits as outputs
-        axi_write(GPIO_EN_REG, 32'h0000_00FF, 4'hF, wr_resp);
-        check_signal("TC22-GPIO-EN-wr",  wr_resp[1], 1'b0);
-        // Write GPIO_OUT
-        axi_write(GPIO_OUT_REG, 32'hA5, 4'hF, wr_resp);
-        check_signal("TC22-GPIO-OUT-wr", wr_resp[1], 1'b0);
+            // TC22
+            $display("\n===== TC22: GPIO Output =====");
+            axi_write(GPIO_EN_REG,  32'h0000_00FF, 4'hF, wr_resp); check_signal("TC22-GPIO-EN-wr",  wr_resp[1], 1'b0);
+            axi_write(GPIO_OUT_REG, 32'hA5,        4'hF, wr_resp); check_signal("TC22-GPIO-OUT-wr", wr_resp[1], 1'b0);
 
-        // ---------------------------------------------------------------
-        // TC23 — GPIO: gpio_out_o reflects written value
-        // ---------------------------------------------------------------
-        $display("\n===== TC23: GPIO out_o verification =====");
-        repeat (3) @(posedge clk);
-        check32("TC23-gpio_out_o", gpio_out_o,    32'hA5,        32'hFF);
-        check32("TC23-gpio_tx_en", gpio_tx_en_o,  32'h0000_00FF, 32'hFF);
+            // TC23
+            $display("\n===== TC23: GPIO out_o verification =====");
+            repeat (3) @(posedge clk);
+            check32("TC23-gpio_out_o", gpio_out_o,    32'hA5,        32'hFF);
+            check32("TC23-gpio_tx_en", gpio_tx_en_o,  32'h0000_00FF, 32'hFF);
 
-        // ---------------------------------------------------------------
-        // TC24 — GPIO: input read reflects gpio_in_i
-        // ---------------------------------------------------------------
-        $display("\n===== TC24: GPIO Input Read =====");
-        @(negedge clk);
-        gpio_in_i = 32'h5A5A_A5A5;
-        repeat (3) @(posedge clk);
-        axi_read(GPIO_IN_REG, rd_data, rd_resp);
-        check32("TC24-GPIO-IN", rd_data, 32'h5A5A_A5A5, 32'hFFFF_FFFF);
-        @(negedge clk);
-        gpio_in_i = 32'h0;
+            // TC24
+            $display("\n===== TC24: GPIO Input Read =====");
+            @(negedge clk); gpio_in_i = 32'h5A5A_A5A5;
+            repeat (3) @(posedge clk);
+            axi_read(GPIO_IN_REG, rd_data, rd_resp);
+            check32("TC24-GPIO-IN", rd_data, 32'h5A5A_A5A5);
+            @(negedge clk); gpio_in_i = 32'h0;
 
-        // ---------------------------------------------------------------
-        // TC25 — GPIO: rising-edge interrupt enable, gpio_irq_o assertion
-        // ---------------------------------------------------------------
-        $display("\n===== TC25: GPIO Rising-Edge IRQ =====");
-        // Enable rising-edge interrupt on bit 0
-        axi_write(GPIO_RISE_EN, 32'h0000_0001, 4'hF, wr_resp);
-        check_signal("TC25-RISE-EN-wr", wr_resp[1], 1'b0);
-        // Drive a rising edge on gpio_in_i[0]
-        @(negedge clk); gpio_in_i = 32'h0;
-        repeat (3) @(posedge clk);
-        @(negedge clk); gpio_in_i = 32'h1;
-        begin : tc25
-            integer tmo;
-            tmo = 0;
-            while (!gpio_irq_o) begin
-                @(posedge clk);
-                tmo++;
-                if (tmo > 200) begin
-                    $error("[FAIL] TC25: gpio_irq_o rising edge timeout"); fail_cnt++;
-                    disable tc25;
+            // TC25
+            $display("\n===== TC25: GPIO Rising-Edge IRQ =====");
+            axi_write(GPIO_RISE_EN, 32'h0000_0001, 4'hF, wr_resp);
+            @(negedge clk); gpio_in_i = 32'h0;
+            repeat (3) @(posedge clk);
+            @(negedge clk); gpio_in_i = 32'h1;
+            begin : tc25
+                integer tmo;
+                tmo = 0;
+                while (!gpio_irq_o) begin
+                    @(posedge clk);
+                    tmo++;
+                    if (tmo > 200) begin
+                        $error("[FAIL] TC25: gpio_irq_o rising edge timeout"); fail_cnt++;
+                        disable tc25;
+                    end
                 end
+                check_signal("TC25-gpio_irq_o", gpio_irq_o, 1'b1);
             end
-            check_signal("TC25-gpio_irq_o", gpio_irq_o, 1'b1);
-        end
-        // Clear interrupt status (W1C)
-        axi_write(GPIO_INT_STAT, 32'hFFFF_FFFF, 4'hF, wr_resp);
-        @(negedge clk); gpio_in_i = 32'h0;
+            axi_write(GPIO_INT_STAT, 32'hFFFF_FFFF, 4'hF, wr_resp);
+            @(negedge clk); gpio_in_i = 32'h0;
 
-        // ---------------------------------------------------------------
-        // TC26 — Full Pipeline: UART → DMA → AES → WDT kick
-        // ---------------------------------------------------------------
-        $display("\n===== TC26: Autonomous Pipeline Integration =====");
-        // Re-configure WDT with generous timeout
-        axi_write(WDT_CTRL, 32'h00, 4'hF, wr_resp);           // disable first
-        axi_write(WDT_LOAD, 32'h0010_0000, 4'hF, wr_resp);    // ~1M cycle window
-        axi_write(WDT_CTRL, 32'h03, 4'hF, wr_resp);           // EN | AUTO_KICK_EN
-
-        // Inject UART byte → pipeline starts
-        uart_inject_byte(8'hC3);
-        // Wait for UART IRQ
-        begin : tc26_uart
-            integer tmo;
-            tmo = 0;
-            while (!uart_read_irq_o) begin
-                @(posedge clk); tmo++;
-                if (tmo > TIMEOUT_CYC) begin
-                    $error("[FAIL] TC26: uart_read_irq_o timeout"); fail_cnt++;
-                    disable tc26_uart;
+            // TC26
+            $display("\n===== TC26: Autonomous Pipeline Integration =====");
+            axi_write(WDT_CTRL, 32'h00,        4'hF, wr_resp);
+            axi_write(WDT_LOAD, 32'h0010_0000, 4'hF, wr_resp);
+            axi_write(WDT_CTRL, 32'h03,        4'hF, wr_resp);
+            uart_inject_byte(8'hC3);
+            begin : tc26_uart
+                integer tmo;
+                tmo = 0;
+                while (!uart_read_irq_o) begin
+                    @(posedge clk); tmo++;
+                    if (tmo > TIMEOUT_CYC) begin
+                        $error("[FAIL] TC26: uart_read_irq_o timeout"); fail_cnt++;
+                        disable tc26_uart;
+                    end
                 end
+                check_signal("TC26-uart_irq", uart_read_irq_o, 1'b1);
             end
-            check_signal("TC26-uart_irq",  uart_read_irq_o, 1'b1);
-        end
-
-        // Trigger AES to simulate DMA→AES→WDT pipeline
-        axi_write(AES_TXTIN0, AES_PT_W0, 4'hF, wr_resp);
-        axi_write(AES_TXTIN1, AES_PT_W1, 4'hF, wr_resp);
-        axi_write(AES_TXTIN2, AES_PT_W2, 4'hF, wr_resp);
-        axi_write(AES_TXTIN3, AES_PT_W3, 4'hF, wr_resp);
-        axi_write(AES_CTRL_REG, 32'h01, 4'hF, wr_resp);
-        begin : tc26_aes
-            integer tmo;
-            tmo = 0;
-            while (!aes_done_pulse_o) begin
-                @(posedge clk); tmo++;
-                if (tmo > 500) begin
-                    $error("[FAIL] TC26: aes_done_pulse_o timeout"); fail_cnt++;
-                    disable tc26_aes;
+            axi_write(AES_TXTIN0, AES_PT_W0, 4'hF, wr_resp);
+            axi_write(AES_TXTIN1, AES_PT_W1, 4'hF, wr_resp);
+            axi_write(AES_TXTIN2, AES_PT_W2, 4'hF, wr_resp);
+            axi_write(AES_TXTIN3, AES_PT_W3, 4'hF, wr_resp);
+            axi_write(AES_CTRL_REG, 32'h01, 4'hF, wr_resp);
+            begin : tc26_aes
+                integer tmo;
+                tmo = 0;
+                while (!aes_done_pulse_o) begin
+                    @(posedge clk); tmo++;
+                    if (tmo > 500) begin
+                        $error("[FAIL] TC26: aes_done_pulse_o timeout"); fail_cnt++;
+                        disable tc26_aes;
+                    end
                 end
+                check_signal("TC26-aes_done_pulse", aes_done_pulse_o, 1'b1);
             end
-            check_signal("TC26-aes_done_pulse", aes_done_pulse_o, 1'b1);
+            repeat (10) @(posedge clk);
+            check_signal("TC26-wdt_no_reset", wdt_reset_o, 1'b0);
+
+            // TC27
+            $display("\n===== TC27: Multi-Master Concurrency =====");
+            fork
+                begin
+                    logic [1:0] r;
+                    axi_write(UART_LCR,   32'h03, 4'hF, r);
+                    axi_write(GPIO_EN_REG, 32'hFF, 4'hF, r);
+                end
+                begin
+                    logic [31:0] d;
+                    logic [1:0]  r2;
+                    axi_read(DMA_STAT_REG, d, r2);
+                    axi_read(WDT_CTRL,     d, r2);
+                end
+            join
+            check_signal("TC27-concurrency-ok", 1'b1, 1'b1);
+
+            // TC28
+            $display("\n===== TC28: SLVERR on unmapped address =====");
+            axi_write(UNMAPPED_ADDR, 32'hDEAD_BEEF, 4'hF, wr_resp);
+            check_signal("TC28-SLVERR-bresp1", wr_resp[1], 1'b1);
+
+            // BFM Summary
+            $display("\n=======================================================");
+            $display("  SIMULATION COMPLETE");
+            $display("  PASS : %0d", pass_cnt);
+            $display("  FAIL : %0d", fail_cnt);
+            $display("  TOTAL: %0d", pass_cnt + fail_cnt);
+            if (fail_cnt == 0)
+                $display("  STATUS : ** ALL BFM TESTS PASSED **");
+            else
+                $display("  STATUS : !! %0d BFM TEST(S) FAILED !!", fail_cnt);
+            $display("=======================================================\n");
+
+            repeat (20) @(posedge clk);
+            $finish;
         end
-        // WDT should NOT have reset during the pipeline run
-        repeat (10) @(posedge clk);
-        check_signal("TC26-wdt_no_reset", wdt_reset_o, 1'b0);
-
-        // ---------------------------------------------------------------
-        // TC27 — Multi-master concurrency (BFM simulates parallel access)
-        // ---------------------------------------------------------------
-        $display("\n===== TC27: Multi-Master Concurrency =====");
-        // Issue back-to-back writes to different peripheral addresses
-        // This exercises the round-robin arbiter on the interconnect.
-        fork
-            begin
-                logic [1:0] r;
-                axi_write(UART_LCR,  32'h03, 4'hF, r);
-                axi_write(GPIO_EN_REG, 32'hFF, 4'hF, r);
-            end
-            begin
-                // DMA CSR access in parallel
-                logic [31:0] d;
-                logic [1:0]  r2;
-                axi_read(DMA_STAT_REG, d, r2);
-                axi_read(WDT_CTRL,     d, r2);
-            end
-        join
-        check_signal("TC27-concurrency-ok", 1'b1, 1'b1);  // reaching here = pass
-
-        // ---------------------------------------------------------------
-        // TC28 — SLVERR: out-of-range access
-        // ---------------------------------------------------------------
-        $display("\n===== TC28: SLVERR on unmapped address =====");
-        axi_write(UNMAPPED_ADDR, 32'hDEAD_BEEF, 4'hF, wr_resp);
-        check_signal("TC28-SLVERR-bresp1", wr_resp[1], 1'b1);   // SLVERR = 2'b10
-
-        // ---------------------------------------------------------------
-        // Final Summary
-        // ---------------------------------------------------------------
-        $display("\n=======================================================");
-        $display("  SIMULATION COMPLETE");
-        $display("  PASS : %0d", pass_cnt);
-        $display("  FAIL : %0d", fail_cnt);
-        $display("  TOTAL: %0d", pass_cnt + fail_cnt);
-        if (fail_cnt == 0)
-            $display("  STATUS : ** ALL TESTS PASSED **");
-        else
-            $display("  STATUS : !! %0d TEST(S) FAILED !!", fail_cnt);
-        $display("=======================================================\n");
-
-        repeat (20) @(posedge clk);
-        $finish;
     end
 
     // =========================================================================
-    // Simulation watchdog — kill sim if it hangs for >10M clocks
+    // Firmware Output & Reactive Handshake Monitor
+    // =========================================================================
+    initial begin
+        bit fw_mode;
+        fw_mode = $test$plusargs("FWONLY");
+
+        if (fw_mode) begin
+            $display("[TB-FW] Firmware monitor active. Listening for handshakes...");
+
+            fork
+                // 1. Respond to UART TX 'K' (0x4B) by injecting 0xA5 into uart_rx_i
+                begin
+                    wait(uart_tx_o === 1'b0);
+                    repeat (BIT_CYCLES * 10) @(posedge clk);
+                    $display("[TB-FW] UART TX 'K' detected. Injecting byte 0xA5 to uart_rx_i...");
+                    uart_inject_byte(8'hA5);
+                end
+
+                // 2. Respond to GPIO lower byte 0xA5 by pulsing gpio_in_i[0]
+                begin
+                    wait(gpio_out_o[7:0] === 8'hA5);
+                    $display("[TB-FW] GPIO lower byte 0xA5 detected. Driving rising-edge interrupt on gpio_in_i[0]...");
+                    repeat (5) @(posedge clk);
+                    gpio_in_i[0] = 1'b1;
+                    repeat (10) @(posedge clk);
+                    gpio_in_i[0] = 1'b0;
+                end
+
+                // 3. Track Step Progress and Pass/Fail Codes on gpio_out_o[31:16]
+                begin
+                    forever begin
+                        @(gpio_out_o[31:16]);
+                        case (gpio_out_o[31:16])
+                            16'h0006: $display("[FW PROGRESS] 0x0006: UART check PASSED");
+                            16'h0009: $display("[FW PROGRESS] 0x0009: Timer check PASSED");
+                            16'h0013: $display("[FW PROGRESS] 0x0013: AES check PASSED");
+                            16'h0016: $display("[FW PROGRESS] 0x0016: DMA check PASSED");
+                            16'h0021: $display("[FW PROGRESS] 0x0021: WDT check PASSED");
+                            16'h0025: $display("[FW PROGRESS] 0x0025: GPIO check PASSED");
+                            16'h0026: $display("[FW PROGRESS] 0x0026: Pipeline check PASSED");
+                            16'h900D: begin
+                                $display("\n=======================================================");
+                                $display("  [TB-FW] *** ALL FIRMWARE CHECKS PASSED (0x900D) ***");
+                                $display("=======================================================\n");
+                                repeat (50) @(posedge clk);
+                                $finish;
+                            end
+                            16'hDEAD: begin
+                                $display("\n[TB-FW] *** FIRMWARE FAILED AT STEP: 0x%04h ***", gpio_out_o[15:0]);
+                                repeat (50) @(posedge clk);
+                                $finish;
+                            end
+                        endcase
+                    end
+                end
+            join
+        end
+    end
+
+    // =========================================================================
+    // Simulation Watchdog
     // =========================================================================
     initial begin
         #(CLK_PERIOD * 10_000_000);

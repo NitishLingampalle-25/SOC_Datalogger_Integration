@@ -4,20 +4,20 @@ ifeq ($(LDVERSION), 0)
 endif
 
 ARCHIVE_OBJS=
-ARCHIVE_OBJS += _60869_archive_1.so
-_60869_archive_1.so : archive.19/_60869_archive_1.a
+ARCHIVE_OBJS += _41466_archive_1.so
+_41466_archive_1.so : archive.28/_41466_archive_1.a
 	@$(AR) -s $<
-	@$(PIC_LD) -shared  -Bsymbolic $(LD_NORELAX_FLAG)  -o .//../run/simv_veer2_uart_aes_tb.daidir//_60869_archive_1.so --whole-archive $< --no-whole-archive
+	@$(PIC_LD) -shared  -Bsymbolic $(LD_NORELAX_FLAG)  -o .//../simv_fw_test.daidir//_41466_archive_1.so --whole-archive $< --no-whole-archive
 	@rm -f $@
-	@ln -sf .//../run/simv_veer2_uart_aes_tb.daidir//_60869_archive_1.so $@
+	@ln -sf .//../simv_fw_test.daidir//_41466_archive_1.so $@
 
 
 ARCHIVE_OBJS += _prev_archive_1.so
-_prev_archive_1.so : archive.19/_prev_archive_1.a
+_prev_archive_1.so : archive.28/_prev_archive_1.a
 	@$(AR) -s $<
-	@$(PIC_LD) -shared  -Bsymbolic $(LD_NORELAX_FLAG)  -o .//../run/simv_veer2_uart_aes_tb.daidir//_prev_archive_1.so --whole-archive $< --no-whole-archive
+	@$(PIC_LD) -shared  -Bsymbolic $(LD_NORELAX_FLAG)  -o .//../simv_fw_test.daidir//_prev_archive_1.so --whole-archive $< --no-whole-archive
 	@rm -f $@
-	@ln -sf .//../run/simv_veer2_uart_aes_tb.daidir//_prev_archive_1.so $@
+	@ln -sf .//../simv_fw_test.daidir//_prev_archive_1.so $@
 
 
 

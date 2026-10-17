@@ -410,16 +410,25 @@ module veer2_dma_aes_wdt_uart_gpio_timer #(
     wire rst_ic = ~rst_l;
 
     // X-propagation guards
-    wire s00_awvalid_clean = (s00_awvalid_w === 1'b1);
-    wire s00_wvalid_clean  = (s00_wvalid_w  === 1'b1);
-    wire s00_bready_clean  = (s00_bready_w  === 1'b1);
-    wire s00_arvalid_clean = (s00_arvalid_w === 1'b1);
-    wire s00_rready_clean  = (s00_rready_w  === 1'b1);
-    wire s01_awvalid_clean = (s01_awvalid_w === 1'b1);
-    wire s01_wvalid_clean  = (s01_wvalid_w  === 1'b1);
-    wire s01_bready_clean  = (s01_bready_w  === 1'b1);
-    wire s01_arvalid_clean = (s01_arvalid_w === 1'b1);
-    wire s01_rready_clean  = (s01_rready_w  === 1'b1);
+    // s00 _clean guards: simple wire pass-through (no === so X doesn't gate the bus)
+    wire s00_awvalid_clean = s00_awvalid_w;
+    wire s00_wvalid_clean  = s00_wvalid_w;
+    wire s00_bready_clean  = s00_bready_w;
+    wire s00_arvalid_clean = s00_arvalid_w;
+    wire s00_rready_clean  = s00_rready_w;
+    // s01 _clean guards: use reg + always so TB `force` on the _w nets propagates
+    reg  s01_awvalid_clean;
+    reg  s01_wvalid_clean;
+    reg  s01_bready_clean;
+    reg  s01_arvalid_clean;
+    reg  s01_rready_clean;
+    always @(*) begin
+        s01_awvalid_clean = (s01_awvalid_w === 1'b1);
+        s01_wvalid_clean  = (s01_wvalid_w  === 1'b1);
+        s01_bready_clean  = (s01_bready_w  === 1'b1);
+        s01_arvalid_clean = (s01_arvalid_w === 1'b1);
+        s01_rready_clean  = (s01_rready_w  === 1'b1);
+    end
 
     // WDT NMI escalation
     wire core_nmi_int = nmi_int | wdt_nmi_o;
@@ -606,8 +615,8 @@ module veer2_dma_aes_wdt_uart_gpio_timer #(
         .dmi_core_enable(dmi_core_enable), .dmi_uncore_enable(dmi_uncore_enable),
         .dmi_uncore_en(dmi_uncore_en),     .dmi_uncore_wr_en(dmi_uncore_wr_en),
         .dmi_uncore_addr(dmi_uncore_addr), .dmi_uncore_wdata(dmi_uncore_wdata),
-        .dmi_uncore_rdata(dmi_uncore_rdata),.dmi_active(dmi_active),
-        .el2_mem_export_if(el2_mem_export_if)
+        .el2_icache_export(el2_mem_export_if.veer_icache_src),
+        .el2_mem_export(el2_mem_export_if.veer_sram_src)
     );
 
     // =========================================================================

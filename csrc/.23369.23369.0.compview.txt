@@ -1,0 +1,9 @@
+{"vcs1":{"timestamp_begin":1792220402.808127493, "rt":1.53, "ut":0.06, "st":0.03}}
+{"vcselab":{"timestamp_begin":1792220404.367229165, "rt":1.43, "ut":0.07, "st":0.01}}
+{"link":{"timestamp_begin":1792220405.817778789, "rt":0.10, "ut":0.07, "st":0.03}}
+{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1792220402.661918189}
+{"VCS_COMP_START_TIME": 1792220402.661918189}
+{"VCS_COMP_END_TIME": 1792220405.947442967}
+{"VCS_USER_OPTIONS": "-full64 -sverilog /tmp/test_veer_exec.sv -o /tmp/simv_test_veer_exec"}
+{"vcs1": {"peak_mem": 368144}}
+{"vcselab": {"peak_mem": 235360}}

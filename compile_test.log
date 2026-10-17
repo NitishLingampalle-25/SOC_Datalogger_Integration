@@ -1,0 +1,726 @@
+
+Warning-[LNX_OS_VERUN] Unsupported Linux version
+  Linux version 'Rocky Linux release 8.10 (Green Obsidian)' is not supported 
+  on 'x86_64' officially, assuming linux compatibility by default. Set 
+  VCS_ARCH_OVERRIDE to linux or suse32 to override.
+  Please refer to release notes for information on supported platforms.
+
+Command: vcs -full64 -sverilog -top veer2_dma_aes_wdt_uart_gpio_timer_tb -f run/final_run.f \
+-o simv_test -l compile_test.log
+                         Chronologic VCS (TM)
+         Version U-2023.03_Full64 -- Sat Oct 17 13:51:00 2026
+
+                    Copyright (c) 1991 - 2023 Synopsys, Inc.
+   This software and the associated documentation are proprietary to Synopsys,
+ Inc. This software may only be used in accordance with the terms and conditions
+ of a written license agreement with Synopsys, Inc. All other use, reproduction,
+   or distribution of this software is strictly prohibited.  Licensed Products
+     communicate with Synopsys servers for the purpose of providing software
+    updates, detecting software piracy and verifying that customers are using
+    Licensed Products in conformity with the applicable License Key for such
+  Licensed Products. Synopsys will use information gathered in connection with
+    this process to deliver software updates and pursue software pirates and
+                                   infringers.
+
+ Inclusivity & Diversity - Visit SolvNetPlus to read the "Synopsys Statement on
+            Inclusivity and Diversity" (Refer to article 000036315 at
+                        https://solvnetplus.synopsys.com)
+
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/common_defines.vh'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/el2_def.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_pdef.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/el2_def.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_assert.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_mubi_pkg.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/common_defines.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_mubi_pkg.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_mem_if.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_mem_if.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_prim_generic_buf.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_prim_buf.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/beh_lib.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/mem_lib.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_lib.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_lib.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_lib.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_lib.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_lib.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/ahb_to_axi4.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/ahb_to_axi4.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/axi4_to_ahb.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/axi4_to_ahb.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_mux.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_wrapper.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_jtag_to_core_sync.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dmi/rvjtag_tap.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_aln_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_aln_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_compress_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_compress_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ifc_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ifc_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_bp_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_bp_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ic_mem.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ic_mem.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ic_mem.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ic_mem.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_mem_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_mem_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_iccm_mem.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_iccm_mem.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_decode_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_decode_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_gpr_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_gpr_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_ib_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_ib_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_pmp_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_pmp_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_tlu_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_tlu_ctl.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/el2_dec_csr_equ_m.svh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_tlu_ctl.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_tlu_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_trigger.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_trigger.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_alu_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_alu_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_mul_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_mul_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_div_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_div_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_clkdomain.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_clkdomain.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_addrcheck.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_addrcheck.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_lsc_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_lsc_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_stbuf.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_stbuf.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_bus_buffer.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_bus_buffer.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_bus_intf.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_bus_intf.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_ecc.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_ecc.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_dccm_mem.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_dccm_mem.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_dccm_ctl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_dccm_ctl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_trigger.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_trigger.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dbg/el2_dbg.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dbg/el2_dbg.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_lockstep_pkg.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_lockstep_pkg.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_lockstep.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_lockstep.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_mem.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_mem.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_pic_ctrl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_pic_ctrl.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/pic_map_auto.svh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_pic_ctrl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_dma_ctrl.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_dma_ctrl.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_pmp.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_pmp.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/common_defines.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/axi_internal_fifo.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/uart_parity_bit_compute.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/uart_controller.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/uart_receiver.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/uart_transmitter.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/axi_uart_top.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/axi_uart_defines.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/axi_uart_top.v'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/axi_uart.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/axi_uart_top.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_rcon.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_sbox.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_inv_sbox.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_key_expand_128.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_cipher_top.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_inv_cipher_top.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/aes_veer_adapter.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/amba_axi_pkg.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/dma_utils_pkg.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/dma_pkg.svh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/dma_utils_pkg.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_mux.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_or_reducer.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_address_decoder.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_clog2.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_address_decoder.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_adapter_common.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_adapter_common.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_skid_buffer.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_skid_buffer.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_bridge.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_adapter.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_adapter.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_w01trg.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_counter.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_counter.v'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_clog2.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_counter.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_register_common.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_register_common.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_default_register.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_external_register.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_indirect_register.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_maskable_register.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_maskable_register.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_fifo.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_fsm.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_streamer.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_if.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_func_wrapper.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/WDT/EF_WDT32.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/WDT/ef_wdt32_axi_wrapper.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_reg_pkg.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_input_stage.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/prim_subreg.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_reg_top.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/common_cells/assertions.svh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_reg_top.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio.sv'
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/register_interface/typedef.svh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio.sv'.
+Parsing included file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/register_interface/assign.svh'.
+Back to file '/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio.sv'.
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/gpio_axi_wrapper.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/System_Timer/timer_core.sv'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/timer_axi_wrapper.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/priority_encoder.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/arbiter.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/axi_interconnect.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/axi_interconnect_wrap_2x6.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/axi4_to_axilite_bridge.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/axi_dwidth_converter_64to32.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v'
+Parsing design file '/home/student/Documents/SOC_Datalogger_project/TB_files/veer2_dma_aes_wdt_uart_gpio_timer_tb.sv'
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+/home/student/Documents/SOC_Datalogger_project/TB_files/veer2_dma_aes_wdt_uart_gpio_timer_tb.sv, 59
+$unit
+  Package 'amba_axi_pkg' already wildcard imported. 
+  Ignoring amba_axi_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+
+Note-[SV-LCM-PPWI] Package previously wildcard imported
+/home/student/Documents/SOC_Datalogger_project/TB_files/veer2_dma_aes_wdt_uart_gpio_timer_tb.sv, 60
+$unit
+  Package 'dma_utils_pkg' already wildcard imported. 
+  Ignoring dma_utils_pkg::*
+  See the SystemVerilog LRM(1800-2005), section 19.2.1.
+
+Top Level Modules:
+       veer2_dma_aes_wdt_uart_gpio_timer_tb
+TimeScale is 1 ns / 1 ps
+
+Warning-[TFIPC] Too few instance port connections
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+veer2_dma_aes_wdt_uart_gpio_timer, "el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The above instance has fewer port connections than the module definition.
+  Please use '+lint=TFIPC-L' to print out detailed information of unconnected 
+  ports.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv, 62
+"csr_dma #(, , , , , 8, ) u_csr_dma( .i_clk (clk),  .i_rst_n ((~rst)),  .i_awvalid (dma_csr_mosi_i.awvalid),  .o_awready (dma_csr_miso_o.awready),  .i_awid (dma_csr_mosi_i.awid),  .i_awaddr (dma_csr_mosi_i.awaddr),  .i_awprot (dma_csr_mosi_i.awprot),  .i_wvalid (dma_csr_mosi_i.wvalid),  .o_wready (dma_csr_miso_o.wready),  .i_wdata (dma_csr_mosi_i.wdata),  .i_wstrb (dma_csr_mosi_i.wstrb),  .o_bvalid (dma_csr_miso_o.bvalid),  .i_bready (dma_csr_mosi_i.bready),  .o_bid (dma_csr_miso_o.bid),  .o_bresp (dma_csr_miso_o.bresp),  .i_arvalid (dma_csr_mosi_i.arvalid),  .o_arready (dma_csr_miso_o.arready),  .i_arid (dma_csr_mosi_i.arid),  .i_araddr (dma_csr_mosi_i.araddr),  .i_arprot (dma_csr_mosi_i.arprot),  .o_rvalid (dma_csr_miso_o.rvalid),  .i_rready (dma_csr_m ... "
+  The following 32-bit expression is connected to 8-bit port "i_awaddr" of 
+  module "csr_dma", instance "u_csr_dma".
+  Expression: dma_csr_mosi_i.awaddr
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v", 2
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv, 62
+"csr_dma #(, , , , , 8, ) u_csr_dma( .i_clk (clk),  .i_rst_n ((~rst)),  .i_awvalid (dma_csr_mosi_i.awvalid),  .o_awready (dma_csr_miso_o.awready),  .i_awid (dma_csr_mosi_i.awid),  .i_awaddr (dma_csr_mosi_i.awaddr),  .i_awprot (dma_csr_mosi_i.awprot),  .i_wvalid (dma_csr_mosi_i.wvalid),  .o_wready (dma_csr_miso_o.wready),  .i_wdata (dma_csr_mosi_i.wdata),  .i_wstrb (dma_csr_mosi_i.wstrb),  .o_bvalid (dma_csr_miso_o.bvalid),  .i_bready (dma_csr_mosi_i.bready),  .o_bid (dma_csr_miso_o.bid),  .o_bresp (dma_csr_miso_o.bresp),  .i_arvalid (dma_csr_mosi_i.arvalid),  .o_arready (dma_csr_miso_o.arready),  .i_arid (dma_csr_mosi_i.arid),  .i_araddr (dma_csr_mosi_i.araddr),  .i_arprot (dma_csr_mosi_i.arprot),  .o_rvalid (dma_csr_miso_o.rvalid),  .i_rready (dma_csr_m ... "
+  The following 32-bit expression is connected to 64-bit port "i_wdata" of 
+  module "csr_dma", instance "u_csr_dma".
+  Expression: dma_csr_mosi_i.wdata
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v", 2
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv, 62
+"csr_dma #(, , , , , 8, ) u_csr_dma( .i_clk (clk),  .i_rst_n ((~rst)),  .i_awvalid (dma_csr_mosi_i.awvalid),  .o_awready (dma_csr_miso_o.awready),  .i_awid (dma_csr_mosi_i.awid),  .i_awaddr (dma_csr_mosi_i.awaddr),  .i_awprot (dma_csr_mosi_i.awprot),  .i_wvalid (dma_csr_mosi_i.wvalid),  .o_wready (dma_csr_miso_o.wready),  .i_wdata (dma_csr_mosi_i.wdata),  .i_wstrb (dma_csr_mosi_i.wstrb),  .o_bvalid (dma_csr_miso_o.bvalid),  .i_bready (dma_csr_mosi_i.bready),  .o_bid (dma_csr_miso_o.bid),  .o_bresp (dma_csr_miso_o.bresp),  .i_arvalid (dma_csr_mosi_i.arvalid),  .o_arready (dma_csr_miso_o.arready),  .i_arid (dma_csr_mosi_i.arid),  .i_araddr (dma_csr_mosi_i.araddr),  .i_arprot (dma_csr_mosi_i.arprot),  .o_rvalid (dma_csr_miso_o.rvalid),  .i_rready (dma_csr_m ... "
+  The following 4-bit expression is connected to 8-bit port "i_wstrb" of 
+  module "csr_dma", instance "u_csr_dma".
+  Expression: dma_csr_mosi_i.wstrb
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v", 2
+  Use +lint=PCWM for more details.
+
+
+Warning-[ENUMASSIGN] Illegal assignment to enum variable
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv, 62
+dma_axi_wrapper, "csr_dma #(, , , , , 8, ) u_csr_dma( .i_clk (clk),  .i_rst_n ((~rst)),  .i_awvalid (dma_csr_mosi_i.awvalid),  .o_awready (dma_csr_miso_o.awready),  .i_awid (dma_csr_mosi_i.awid),  .i_awaddr (dma_csr_mosi_i.awaddr),  .i_awprot (dma_csr_mosi_i.awprot),  .i_wvalid (dma_csr_mosi_i.wvalid),  .o_wready (dma_csr_miso_o.wready),  .i_wdata (dma_csr_mosi_i.wdata),  .i_wstrb (dma_csr_mosi_i.wstrb),  .o_bvalid (dma_csr_miso_o.bvalid),  .i_bready (dma_csr_mosi_i.bready),  .o_bid (dma_csr_miso_o.bid),  .o_bresp (dma_csr_miso_o.bresp),  .i_arvalid (dma_csr_mosi_i.arvalid),  .o_arready (dma_csr_miso_o.arready),  .i_arid (dma_csr_mosi_i.arid),  .i_araddr (dma_csr_mosi_i.araddr),  .i_arprot (dma_csr_mosi_i.arprot),  .o_rvalid (dma_csr_miso_o.rvalid),  .i_rready (dma_csr_m ... "
+  Only expressions of the enum type can be assigned to an enum variable. 
+  The type wire [1:0] is incompatible with the enum 'axi_resp_t'
+  Expression: o_bresp
+  Use the static cast operator to convert the expression to enum type.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv, 62
+"csr_dma #(, , , , , 8, ) u_csr_dma( .i_clk (clk),  .i_rst_n ((~rst)),  .i_awvalid (dma_csr_mosi_i.awvalid),  .o_awready (dma_csr_miso_o.awready),  .i_awid (dma_csr_mosi_i.awid),  .i_awaddr (dma_csr_mosi_i.awaddr),  .i_awprot (dma_csr_mosi_i.awprot),  .i_wvalid (dma_csr_mosi_i.wvalid),  .o_wready (dma_csr_miso_o.wready),  .i_wdata (dma_csr_mosi_i.wdata),  .i_wstrb (dma_csr_mosi_i.wstrb),  .o_bvalid (dma_csr_miso_o.bvalid),  .i_bready (dma_csr_mosi_i.bready),  .o_bid (dma_csr_miso_o.bid),  .o_bresp (dma_csr_miso_o.bresp),  .i_arvalid (dma_csr_mosi_i.arvalid),  .o_arready (dma_csr_miso_o.arready),  .i_arid (dma_csr_mosi_i.arid),  .i_araddr (dma_csr_mosi_i.araddr),  .i_arprot (dma_csr_mosi_i.arprot),  .o_rvalid (dma_csr_miso_o.rvalid),  .i_rready (dma_csr_m ... "
+  The following 32-bit expression is connected to 8-bit port "i_araddr" of 
+  module "csr_dma", instance "u_csr_dma".
+  Expression: dma_csr_mosi_i.araddr
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v", 2
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv, 62
+"csr_dma #(, , , , , 8, ) u_csr_dma( .i_clk (clk),  .i_rst_n ((~rst)),  .i_awvalid (dma_csr_mosi_i.awvalid),  .o_awready (dma_csr_miso_o.awready),  .i_awid (dma_csr_mosi_i.awid),  .i_awaddr (dma_csr_mosi_i.awaddr),  .i_awprot (dma_csr_mosi_i.awprot),  .i_wvalid (dma_csr_mosi_i.wvalid),  .o_wready (dma_csr_miso_o.wready),  .i_wdata (dma_csr_mosi_i.wdata),  .i_wstrb (dma_csr_mosi_i.wstrb),  .o_bvalid (dma_csr_miso_o.bvalid),  .i_bready (dma_csr_mosi_i.bready),  .o_bid (dma_csr_miso_o.bid),  .o_bresp (dma_csr_miso_o.bresp),  .i_arvalid (dma_csr_mosi_i.arvalid),  .o_arready (dma_csr_miso_o.arready),  .i_arid (dma_csr_mosi_i.arid),  .i_araddr (dma_csr_mosi_i.araddr),  .i_arprot (dma_csr_mosi_i.arprot),  .o_rvalid (dma_csr_miso_o.rvalid),  .i_rready (dma_csr_m ... "
+  The following 32-bit expression is connected to 64-bit port "o_rdata" of 
+  module "csr_dma", instance "u_csr_dma".
+  Expression: dma_csr_miso_o.rdata
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v", 2
+  Use +lint=PCWM for more details.
+
+
+Warning-[ENUMASSIGN] Illegal assignment to enum variable
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv, 62
+dma_axi_wrapper, "csr_dma #(, , , , , 8, ) u_csr_dma( .i_clk (clk),  .i_rst_n ((~rst)),  .i_awvalid (dma_csr_mosi_i.awvalid),  .o_awready (dma_csr_miso_o.awready),  .i_awid (dma_csr_mosi_i.awid),  .i_awaddr (dma_csr_mosi_i.awaddr),  .i_awprot (dma_csr_mosi_i.awprot),  .i_wvalid (dma_csr_mosi_i.wvalid),  .o_wready (dma_csr_miso_o.wready),  .i_wdata (dma_csr_mosi_i.wdata),  .i_wstrb (dma_csr_mosi_i.wstrb),  .o_bvalid (dma_csr_miso_o.bvalid),  .i_bready (dma_csr_mosi_i.bready),  .o_bid (dma_csr_miso_o.bid),  .o_bresp (dma_csr_miso_o.bresp),  .i_arvalid (dma_csr_mosi_i.arvalid),  .o_arready (dma_csr_miso_o.arready),  .i_arid (dma_csr_mosi_i.arid),  .i_araddr (dma_csr_mosi_i.araddr),  .i_arprot (dma_csr_mosi_i.arprot),  .o_rvalid (dma_csr_miso_o.rvalid),  .i_rready (dma_csr_m ... "
+  Only expressions of the enum type can be assigned to an enum variable. 
+  The type wire [1:0] is incompatible with the enum 'axi_resp_t'
+  Expression: o_rresp
+  Use the static cast operator to convert the expression to enum type.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+"el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The following 4-bit expression is connected to 3-bit port "lsu_axi_awid" of 
+  module "el2_veer_wrapper", instance "veer_inst".
+  Expression: lsu_axi_awid_w
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv",
+  27
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+"el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The following 4-bit expression is connected to 3-bit port "lsu_axi_bid" of 
+  module "el2_veer_wrapper", instance "veer_inst".
+  Expression: lsu_axi_bid_w
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv",
+  27
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+"el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The following 4-bit expression is connected to 3-bit port "lsu_axi_arid" of 
+  module "el2_veer_wrapper", instance "veer_inst".
+  Expression: lsu_axi_arid_w
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv",
+  27
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+"el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The following 4-bit expression is connected to 3-bit port "lsu_axi_rid" of 
+  module "el2_veer_wrapper", instance "veer_inst".
+  Expression: lsu_axi_rid_w
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv",
+  27
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+"el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The following 2-bit expression is connected to 1-bit port "sb_axi_awid" of 
+  module "el2_veer_wrapper", instance "veer_inst".
+  Expression: sb_axi_awid
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv",
+  27
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+"el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The following 2-bit expression is connected to 1-bit port "sb_axi_bid" of 
+  module "el2_veer_wrapper", instance "veer_inst".
+  Expression: sb_axi_bid
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv",
+  27
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+"el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The following 2-bit expression is connected to 1-bit port "sb_axi_arid" of 
+  module "el2_veer_wrapper", instance "veer_inst".
+  Expression: sb_axi_arid
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv",
+  27
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v, 494
+"el2_veer_wrapper veer_inst( .clk (clk),  .rst_l (rst_l),  .dbg_rst_l (dbg_rst_l),  .rst_vec (rst_vec),  .nmi_int (core_nmi_int),  .nmi_vec (nmi_vec),  .jtag_id (jtag_id),  .trace_rv_i_insn_ip (trace_rv_i_insn_ip),  .trace_rv_i_address_ip (trace_rv_i_address_ip),  .trace_rv_i_valid_ip (trace_rv_i_valid_ip),  .trace_rv_i_exception_ip (trace_rv_i_exception_ip),  .trace_rv_i_ecause_ip (trace_rv_i_ecause_ip),  .trace_rv_i_interrupt_ip (trace_rv_i_interrupt_ip),  .trace_rv_i_tval_ip (trace_rv_i_tval_ip),  .lsu_axi_awvalid (lsu_axi_awvalid_w),  .lsu_axi_awready (lsu_axi_awready_w),  .lsu_axi_awid (lsu_axi_awid_w),  .lsu_axi_awaddr (lsu_axi_awaddr_w),  .lsu_axi_awregion (lsu_axi_awregion_w),  .lsu_axi_awlen (lsu_axi_awlen_w),  .lsu_axi_awsize (lsu_axi_awsize_w) ... "
+  The following 2-bit expression is connected to 1-bit port "sb_axi_rid" of 
+  module "el2_veer_wrapper", instance "veer_inst".
+  Expression: sb_axi_rid
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv",
+  27
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 73
+"rggen_axi4lite_adapter #(ID_WIDTH, ADDRESS_WIDTH, 8, 64, 12, PRE_DECODE, BASE_ADDRESS, 256, ERROR_STATUS, DEFAULT_READ_DATA, , WRITE_FIRST, , , ) u_adapter( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_awvalid (i_awvalid),  .o_awready (o_awready),  .i_awid (i_awid),  .i_awaddr (i_awaddr),  .i_awprot (i_awprot),  .i_wvalid (i_wvalid),  .o_wready (o_wready),  .i_wdata (i_wdata),  .i_wstrb (i_wstrb),  .o_bvalid (o_bvalid),  .i_bready (i_bready),  .o_bid (o_bid),  .o_bresp (o_bresp),  .i_arvalid (i_arvalid),  .o_arready (o_arready),  .i_arid (i_arid),  .i_araddr (i_araddr),  .i_arprot (i_arprot),  .o_rvalid (o_rvalid),  .i_rready (i_rready),  .o_rid (o_rid),  .o_rdata (o_rdata),  .o_rresp (o_rresp),  .o_register_valid (w_register_valid),  .o_register_access (w_ ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "o_register_strobe" of module "rggen_axi4lite_adapter", instance 
+  "u_adapter".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_adapter.v",
+  2
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 125
+" rggen_default_register #(1, 1, 8, 8'b0, 64, 64, 0) g_dma_control.u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[0+:1]),  .o_register_ready (w_register_ready[0+:1]),  .o_register_status (w_register_status[0+:2]),  .o_register_read_data (w_register_read_data[0+:64]),  .o_register_value (w_register_value[0+:64]),  .o_bit_field_valid (g_dma_control.w_bit_field_valid),  .o_bit_field_read_mask (g_dma_control.w_bit_field_read_mask),  .o_bit_field_write_mask (g_dma_control.w_bit_field_write_mask),  .o_bit_field ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_control.u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 246
+" rggen_default_register #(1, 0, 8, 8'h08, 64, 64, 0) g_dma_status.u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[1+:1]),  .o_register_ready (w_register_ready[1+:1]),  .o_register_status (w_register_status[2+:2]),  .o_register_read_data (w_register_read_data[64+:64]),  .o_register_value (w_register_value[64+:64]),  .o_bit_field_valid (g_dma_status.w_bit_field_valid),  .o_bit_field_read_mask (g_dma_status.w_bit_field_read_mask),  .o_bit_field_write_mask (g_dma_status.w_bit_field_write_mask),  .o_bit_field_ ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_status.u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 366
+" rggen_default_register #(1, 0, 8, 8'h10, 64, 64, 0) g_dma_error_addr.u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[2+:1]),  .o_register_ready (w_register_ready[2+:1]),  .o_register_status (w_register_status[4+:2]),  .o_register_read_data (w_register_read_data[128+:64]),  .o_register_value (w_register_value[128+:64]),  .o_bit_field_valid (g_dma_error_addr.w_bit_field_valid),  .o_bit_field_read_mask (g_dma_error_addr.w_bit_field_read_mask),  .o_bit_field_write_mask (g_dma_error_addr.w_bit_field_write_mas ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_error_addr.u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 431
+" rggen_default_register #(1, 0, 8, 8'h18, 64, 64, 0) g_dma_error_stats.u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[3+:1]),  .o_register_ready (w_register_ready[3+:1]),  .o_register_status (w_register_status[6+:2]),  .o_register_read_data (w_register_read_data[192+:64]),  .o_register_value (w_register_value[192+:64]),  .o_bit_field_valid (g_dma_error_stats.w_bit_field_valid),  .o_bit_field_read_mask (g_dma_error_stats.w_bit_field_read_mask),  .o_bit_field_write_mask (g_dma_error_stats.w_bit_field_write ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_error_stats.u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 554
+" rggen_default_register #(1, 1, 8, 8'h20, 64, 64, 0) g_dma_desc_src_addr.g[0].u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[(1 * (4 + 0))+:1]),  .o_register_ready (w_register_ready[(1 * (4 + 0))+:1]),  .o_register_status (w_register_status[(2 * (4 + 0))+:2]),  .o_register_read_data (w_register_read_data[(64 * (4 + 0))+:64]),  .o_register_value (w_register_value[((64 * (4 + 0)) + 0)+:64]),  .o_bit_field_valid (g_dma_desc_src_addr.g[0].w_bit_field_valid),  .o_bit_field_read_mask (g_dma_desc_src_addr.g[0]. ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_desc_src_addr.g[0].u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 554
+" rggen_default_register #(1, 1, 8, 8'h20, 64, 64, 1) g_dma_desc_src_addr.g[1].u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[(1 * (4 + 1))+:1]),  .o_register_ready (w_register_ready[(1 * (4 + 1))+:1]),  .o_register_status (w_register_status[(2 * (4 + 1))+:2]),  .o_register_read_data (w_register_read_data[(64 * (4 + 1))+:64]),  .o_register_value (w_register_value[((64 * (4 + 1)) + 0)+:64]),  .o_bit_field_valid (g_dma_desc_src_addr.g[1].w_bit_field_valid),  .o_bit_field_read_mask (g_dma_desc_src_addr.g[1]. ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_desc_src_addr.g[1].u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 622
+" rggen_default_register #(1, 1, 8, 8'h30, 64, 64, 0) g_dma_desc_dst_addr.g[0].u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[(1 * (6 + 0))+:1]),  .o_register_ready (w_register_ready[(1 * (6 + 0))+:1]),  .o_register_status (w_register_status[(2 * (6 + 0))+:2]),  .o_register_read_data (w_register_read_data[(64 * (6 + 0))+:64]),  .o_register_value (w_register_value[((64 * (6 + 0)) + 0)+:64]),  .o_bit_field_valid (g_dma_desc_dst_addr.g[0].w_bit_field_valid),  .o_bit_field_read_mask (g_dma_desc_dst_addr.g[0]. ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_desc_dst_addr.g[0].u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 622
+" rggen_default_register #(1, 1, 8, 8'h30, 64, 64, 1) g_dma_desc_dst_addr.g[1].u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[(1 * (6 + 1))+:1]),  .o_register_ready (w_register_ready[(1 * (6 + 1))+:1]),  .o_register_status (w_register_status[(2 * (6 + 1))+:2]),  .o_register_read_data (w_register_read_data[(64 * (6 + 1))+:64]),  .o_register_value (w_register_value[((64 * (6 + 1)) + 0)+:64]),  .o_bit_field_valid (g_dma_desc_dst_addr.g[1].w_bit_field_valid),  .o_bit_field_read_mask (g_dma_desc_dst_addr.g[1]. ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_desc_dst_addr.g[1].u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 690
+" rggen_default_register #(1, 1, 8, 8'h40, 64, 64, 0) g_dma_desc_num_bytes.g[0].u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[(1 * (8 + 0))+:1]),  .o_register_ready (w_register_ready[(1 * (8 + 0))+:1]),  .o_register_status (w_register_status[(2 * (8 + 0))+:2]),  .o_register_read_data (w_register_read_data[(64 * (8 + 0))+:64]),  .o_register_value (w_register_value[((64 * (8 + 0)) + 0)+:64]),  .o_bit_field_valid (g_dma_desc_num_bytes.g[0].w_bit_field_valid),  .o_bit_field_read_mask (g_dma_desc_num_bytes.g[ ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_desc_num_bytes.g[0].u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 690
+" rggen_default_register #(1, 1, 8, 8'h40, 64, 64, 1) g_dma_desc_num_bytes.g[1].u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[(1 * (8 + 1))+:1]),  .o_register_ready (w_register_ready[(1 * (8 + 1))+:1]),  .o_register_status (w_register_status[(2 * (8 + 1))+:2]),  .o_register_read_data (w_register_read_data[(64 * (8 + 1))+:64]),  .o_register_value (w_register_value[((64 * (8 + 1)) + 0)+:64]),  .o_bit_field_valid (g_dma_desc_num_bytes.g[1].w_bit_field_valid),  .o_bit_field_read_mask (g_dma_desc_num_bytes.g[ ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_desc_num_bytes.g[1].u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 758
+" rggen_default_register #(1, 1, 8, 8'h50, 64, 64, 0) g_dma_desc_cfg.g[0].u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[(1 * (10 + 0))+:1]),  .o_register_ready (w_register_ready[(1 * (10 + 0))+:1]),  .o_register_status (w_register_status[(2 * (10 + 0))+:2]),  .o_register_read_data (w_register_read_data[(64 * (10 + 0))+:64]),  .o_register_value (w_register_value[((64 * (10 + 0)) + 0)+:64]),  .o_bit_field_valid (g_dma_desc_cfg.g[0].w_bit_field_valid),  .o_bit_field_read_mask (g_dma_desc_cfg.g[0].w_bit_fiel ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_desc_cfg.g[0].u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[PCWM-W] Port connection width mismatch
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v, 758
+" rggen_default_register #(1, 1, 8, 8'h50, 64, 64, 1) g_dma_desc_cfg.g[1].u_register( .i_clk (i_clk),  .i_rst_n (i_rst_n),  .i_register_valid (w_register_valid),  .i_register_access (w_register_access),  .i_register_address (w_register_address),  .i_register_write_data (w_register_write_data),  .i_register_strobe (w_register_strobe),  .o_register_active (w_register_active[(1 * (10 + 1))+:1]),  .o_register_ready (w_register_ready[(1 * (10 + 1))+:1]),  .o_register_status (w_register_status[(2 * (10 + 1))+:2]),  .o_register_read_data (w_register_read_data[(64 * (10 + 1))+:64]),  .o_register_value (w_register_value[((64 * (10 + 1)) + 0)+:64]),  .o_bit_field_valid (g_dma_desc_cfg.g[1].w_bit_field_valid),  .o_bit_field_read_mask (g_dma_desc_cfg.g[1].w_bit_fiel ... "
+  The following 8-bit expression is connected to 64-bit port 
+  "i_register_strobe" of module "rggen_default_register", instance 
+  "g_dma_desc_cfg.g[1].u_register".
+  Expression: w_register_strobe
+  Instantiated module defined at: 
+  "/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v",
+  21
+  Use +lint=PCWM for more details.
+
+
+Warning-[INTFDV] VCD dumping of interface/program/package
+/home/student/Documents/SOC_Datalogger_project/TB_files/veer2_dma_aes_wdt_uart_gpio_timer_tb.sv, 1135
+  Selective VCD dumping of interface 'el2_mem_if' is not supported.  Selective
+  VCD dumping for interfaces, packages and programs is not supported.
+  Use full VCD dumping '$dumpvars(0)', or use VPD or FSDB dumping, recompile 
+  with '-debug_access'.
+
+Notice: Ports coerced to inout, use -notice for details
+Starting vcs inline pass...
+
+57 modules and 0 UDP read.
+recompiling package el2_pkg
+recompiling package el2_mubi_pkg
+recompiling module el2_mem_if
+recompiling module rvdff
+recompiling module rvdffs
+recompiling module rvdffsc
+recompiling module rvdff_fpga
+recompiling module rvdffs_fpga
+recompiling module rvdffe
+recompiling module rvdffpcie
+recompiling module rvdfflie
+recompiling module rvdffie
+recompiling module rvbradder
+recompiling module rvmaskandmatch
+recompiling module rvecc_encode
+recompiling module rvecc_decode
+recompiling module rvoclkhdr
+recompiling module el2_btb_tag_hash
+recompiling module el2_btb_addr_hash
+recompiling module el2_btb_ghr_hash
+recompiling module dmi_mux
+recompiling module dmi_wrapper
+recompiling module el2_ifu_bp_ctl
+recompiling module el2_dec_pmp_ctl
+recompiling module el2_dec_tlu_ctl
+recompiling module el2_dec
+recompiling module el2_exu
+recompiling module el2_lsu
+recompiling package el2_lockstep_pkg
+recompiling module el2_mem
+recompiling module el2_pic_ctrl
+recompiling module el2_cmp_and_mux
+recompiling module el2_configurable_gw
+recompiling module el2_dma_ctrl
+recompiling module el2_pmp
+recompiling module el2_veer_wrapper
+recompiling module axi_uart_top
+recompiling module aes_key_expand_128
+recompiling package amba_axi_pkg
+recompiling package dma_utils_pkg
+recompiling module rggen_axi4lite_adapter
+recompiling module rggen_bit_field
+recompiling module rggen_default_register
+recompiling module dma_fifo
+recompiling module dma_streamer
+recompiling module ef_wdt32_axi_wrapper
+recompiling package gpio_reg_pkg
+recompiling module gpio_input_stage
+recompiling module prim_subreg
+recompiling module prim_subreg_ext
+50 of 57 modules done
+recompiling module gpio_axi_wrapper
+recompiling module timer_axi_wrapper
+recompiling module priority_encoder
+recompiling module axi_interconnect_wrap_2x6
+recompiling module axi4_to_axilite_bridge
+recompiling module axi_dwidth_converter_64to32
+recompiling module veer2_dma_aes_wdt_uart_gpio_timer_tb
+All of 57 modules done
+rm -f _cuarc*.so _csrc*.so pre_vcsobj_*.so share_vcsobj_*.so
+if [ -x ../simv_test ]; then chmod a-x ../simv_test; fi
+g++  -o ../simv_test      -rdynamic  -Wl,-rpath='$ORIGIN'/simv_test.daidir -Wl,-rpath=./simv_test.daidir \
+-Wl,-rpath=/home/student/snps_tools_target/vcs/U-2023.03/linux64/lib -L/home/student/snps_tools_target/vcs/U-2023.03/linux64/lib \
+-Wl,-rpath-link=./  /usr/lib64/libnuma.so.1   objs/amcQw_d.o   _32426_archive_1.so \
+SIM_l.o      rmapats_mop.o rmapats.o rmar.o rmar_nd.o  rmar_llvm_0_1.o rmar_llvm_0_0.o \
+-lvirsim -lerrorinf -lsnpsmalloc -lvfs    -lvcsnew -lsimprofile -luclinative /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/vcs_tls.o \
+-Wl,-whole-archive  -lvcsucli    -Wl,-no-whole-archive          /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/vcs_save_restore_new.o \
+-ldl  -lc -lm -lpthread -ldl 
+../simv_test up to date
+CPU time: 5.928 seconds to compile + .291 seconds to elab + .123 seconds to link

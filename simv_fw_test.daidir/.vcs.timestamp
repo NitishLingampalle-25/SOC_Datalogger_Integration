@@ -1,0 +1,305 @@
+52       
+0 el2_pdef.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/el2_pdef.vh
+0 common_defines.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/common_defines.vh
+0 el2_param.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/el2_param.vh
+0 el2_dec_csr_equ_m.svh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/el2_dec_csr_equ_m.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_dec_csr_equ_m.svh
+0 pic_map_auto.svh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/pic_map_auto.svh
+0 axi_uart_defines.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/axi_uart_defines.vh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/axi_uart_defines.vh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/axi_uart_defines.vh
+0 axi_uart.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/axi_uart.vh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/axi_uart.vh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/axi_uart.vh
+0 dma_pkg.svh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/dma_pkg.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/dma_pkg.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/dma_pkg.svh
+0 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/dma_pkg.svh
+0 rggen_clog2.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/rggen_clog2.vh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/rggen_clog2.vh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/rggen_clog2.vh
+0 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/rggen_clog2.vh
+0 rggen_rtl_macros.vh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/rggen_rtl_macros.vh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/rggen_rtl_macros.vh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/rggen_rtl_macros.vh
+0 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/rggen_rtl_macros.vh
+0 common_cells/assertions.svh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/common_cells/assertions.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/common_cells/assertions.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/common_cells/assertions.svh
+0 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/common_cells/assertions.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/common_cells/assertions.svh
+0 register_interface/typedef.svh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/register_interface/typedef.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/register_interface/typedef.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/register_interface/typedef.svh
+0 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/register_interface/typedef.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/register_interface/typedef.svh
+0 register_interface/assign.svh
+0 /home/student/snps_tools_target/vcs/U-2023.03/etc/systemverilog/register_interface/assign.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/register_interface/assign.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/register_interface/assign.svh
+0 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/register_interface/assign.svh
+0 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/register_interface/assign.svh
+30
+-Mamsrun=
+-Masflags=
+-Mcc=gcc
+-Mcfl= -pipe -fPIC -O -I/home/student/snps_tools_target/vcs/U-2023.03/include
+-Mcplusplus=g++
+-Mcrt0=
+-Mcrtn=
+-Mcsrc=
+-Mexternalobj=
+-Mldflags= -rdynamic
+-Mobjects= /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libvirsim.so /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/liberrorinf.so /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libsnpsmalloc.so /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libvfs.so
+-Mout=simv_fw_test
+-Msaverestoreobj=/home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/vcs_save_restore_new.o
+-Msyslibs=-ldl
+-Mvcsaceobjs=
+-Mxcflags= -pipe -fPIC -I/home/student/snps_tools_target/vcs/U-2023.03/include
+-Mxllcflags=
+-f run/run_scripts_tb.f
+-full64
+-gen_obj
+-l
+-o simv_fw_test
+-picarchive
+-sverilog
+-top
+/home/student/snps_tools_target/vcs/U-2023.03/linux64/bin/vcs1
+compile_fw.log
+veer2_dma_aes_wdt_uart_gpio_timer_tb
+simv_fw_test
+run/run_scripts_tb.f
+86
+which_declare=declare -f
+XMODIFIERS=@im=ibus
+XDG_VTNR=2
+XDG_SESSION_TYPE=wayland
+XDG_SESSION_ID=2
+XDG_SESSION_DESKTOP=gnome
+XDG_SEAT=seat0
+XDG_RUNTIME_DIR=/run/user/1000
+XDG_MENU_PREFIX=gnome-
+XDG_DATA_DIRS=/home/student/.local/share/flatpak/exports/share:/var/lib/flatpak/exports/share:/usr/local/share/:/usr/share/
+XDG_CURRENT_DESKTOP=GNOME
+XAUTHORITY=/run/user/1000/.mutter-Xwaylandauth.O8DBX3
+WAYLAND_DISPLAY=wayland-0
+VTE_VERSION=5204
+VMR_MODE_FLAG=64
+VCS_PATHMAP_PRELOAD_DONE=1
+VCS_MX_HOME_INTERNAL=1
+VCS_MODE_FLAG=64
+VCS_LOG_FILE=compile_fw.log
+VCS_HOME=/home/student/snps_tools_target/vcs/U-2023.03
+VCS_EXEC_DONE=1
+VCS_DEPTH=0
+VCS_ARG_ADDED_FOR_TMP=1
+VCS_ARCH=linux64
+USERNAME=student
+UNAME=/bin/uname
+TOOL_HOME=/home/student/snps_tools_target/vcs/U-2023.03/linux64
+S_COLORS=auto
+SSH_AUTH_SOCK=/run/user/1000/keyring/ssh
+SSH_ASKPASS=/usr/libexec/openssh/gnome-ssh-askpass
+SNPS_VCS_CLANG_PATH=/home/student/snps_tools_target/vcs/U-2023.03/linux64/clang
+SNPS_INTERNAL_VCS_LINUX_OS=linux
+SESSION_MANAGER=local/unix:@/tmp/.ICE-unix/3403,unix/unix:/tmp/.ICE-unix/3403
+SCRNAME=vcs
+SCRIPT_NAME=vcs
+RV_ROOT=/home/student/Documents/SoC-Memory-MBIST-RISCV/rtl/Core/Cores-VeeR-EL2
+QT_IM_MODULE=ibus
+OVA_UUM=0
+MODULES_RUN_QUARANTINE=LD_LIBRARY_PATH LD_PRELOAD
+MODULES_CMD=/usr/share/Modules/libexec/modulecmd.tcl
+MODULESHOME=/usr/share/Modules
+MODULEPATH_modshare=/usr/share/Modules/modulefiles:2:/etc/modulefiles:2:/usr/share/modulefiles:2
+MODULEPATH=/etc/scl/modulefiles:/etc/scl/modulefiles:/usr/share/Modules/modulefiles:/etc/modulefiles:/usr/share/modulefiles
+MANAGERPID=3364
+LOADEDMODULES=
+LESSOPEN=||/usr/bin/lesspipe.sh %s
+LC_ALL=C
+JOURNAL_STREAM=9:45662
+JJ_PAGER=cat
+JJ_EDITOR=false
+INVOCATION_ID=96a30646c4784ef6bb2ee2d5de75d574
+HISTCONTROL=ignoredups
+HGEDITOR=false
+GUESTFISH_RESTORE=\e[0m
+GUESTFISH_PS1=\[\e[1;32m\]><fs>\[\e[0;31m\] 
+GUESTFISH_OUTPUT=\e[0m
+GUESTFISH_INIT=\e[1;34m
+GNOME_TERMINAL_SERVICE=:1.106
+GNOME_TERMINAL_SCREEN=/org/gnome/Terminal/screen/f3bc3c84_d868_49a9_9040_d8270c304cdc
+GNOME_DESKTOP_SESSION_ID=this-is-deprecated
+GIT_PAGER=cat
+GIT_EDITOR=false
+GDM_LANG=en_IN.UTF-8
+GDMSESSION=gnome
+DESKTOP_SESSION=gnome
+DEBUGINFOD_URLS=https://debuginfod.centos.org/ 
+DBUS_STARTER_BUS_TYPE=session
+DBUS_STARTER_ADDRESS=unix:path=/run/user/1000/bus,guid=1b1b1644355b4f2dbfda13496ad2fa3f
+DBUS_SESSION_BUS_ADDRESS=unix:path=/run/user/1000/bus,guid=1b1b1644355b4f2dbfda13496ad2fa3f
+COLORTERM=truecolor
+BASH_FUNC_which%%=() {  ( alias;_ eval ${which_declare} ) | /usr/bin/which --tty-only --read-alias --read-functions --show-tilde --show-dot $@_}
+BASH_FUNC_switchml%%=() {  typeset swfound=1;_ if [ "${MODULES_USE_COMPAT_VERSION:-0}" = '1' ]; then_ typeset swname='main';_ if [ -e /usr/share/Modules/libexec/modulecmd.tcl ]; then_ typeset swfound=0;_ unset MODULES_USE_COMPAT_VERSION;_ fi;_ else_ typeset swname='compatibility';_ if [ -e /usr/share/Modules/libexec/modulecmd-compat ]; then_ typeset swfound=0;_ MODULES_USE_COMPAT_VERSION=1;_ export MODULES_USE_COMPAT_VERSION;_ fi;_ fi;_ if [ $swfound -eq 0 ]; then_ echo "Switching to Modules $swname version";_ source /usr/share/Modules/init/bash;_ else_ echo "Cannot switch to Modules $swname version, command not found";_ return 1;_ fi_}
+BASH_FUNC_scl%%=() {  if [ "$1" = "load" -o "$1" = "unload" ]; then_ eval "module $@";_ else_ /usr/bin/scl "$@";_ fi_}
+BASH_FUNC_module%%=() {  _module_raw "$@" 2>&1_}
+BASH_FUNC_ml%%=() {  module ml "$@"_}
+BASH_FUNC__module_raw%%=() {  unset _mlshdbg;_ if [ "${MODULES_SILENT_SHELL_DEBUG:-0}" = '1' ]; then_ case "$-" in _ *v*x*)_ set +vx;_ _mlshdbg='vx'_ ;;_ *v*)_ set +v;_ _mlshdbg='v'_ ;;_ *x*)_ set +x;_ _mlshdbg='x'_ ;;_ *)_ _mlshdbg=''_ ;;_ esac;_ fi;_ unset _mlre _mlIFS;_ if [ -n "${IFS+x}" ]; then_ _mlIFS=$IFS;_ fi;_ IFS=' ';_ for _mlv in ${MODULES_RUN_QUARANTINE:-};_ do_ if [ "${_mlv}" = "${_mlv##*[!A-Za-z0-9_]}" -a "${_mlv}" = "${_mlv#[0-9]}" ]; then_ if [ -n "`eval 'echo ${'$_mlv'+x}'`" ]; then_ _mlre="${_mlre:-}${_mlv}_modquar='`eval 'echo ${'$_mlv'}'`' ";_ fi;_ _mlrv="MODULES_RUNENV_${_mlv}";_ _mlre="${_mlre:-}${_mlv}='`eval 'echo ${'$_mlrv':-}'`' ";_ fi;_ done;_ if [ -n "${_mlre:-}" ]; then_ eval `eval ${_mlre} /usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash '"$@"'`;_ else_ eval `/usr/bin/tclsh /usr/share/Modules/libexec/modulecmd.tcl bash "$@"`;_ fi;_ _mlstatus=$?;_ if [ -n "${_mlIFS+x}" ]; then_ IFS=$_mlIFS;_ else_ unset IFS;_ fi;_ unset _mlre _mlv _mlrv _mlIFS;_ if [ -n "${_mlshdbg:-}" ]; then_ set -$_mlshdbg;_ fi;_ unset _mlshdbg;_ return $_mlstatus_}
+ANTIGRAVITY_TRAJECTORY_ID=4f158b70-3575-4308-9105-c83ca89553d0
+ANTIGRAVITY_SOURCE_METADATA={"tool":{"conversationId":"eebb5766-6db5-4013-b222-d7beccc5753a", "stepIndex":603, "toolCall":{"id":"call_4489748", "name":"run_command", "argumentsJson":"{\"CommandLine\":\"export VCS_HOME=/home/student/snps_tools_target/vcs/U-2023.03\\nexport PATH=$VCS_HOME/bin:$PATH\\nexport SNPSLMD_LICENSE_FILE=27021@14.139.1.126\\nvcs -full64 -sverilog -top veer2_dma_aes_wdt_uart_gpio_timer_tb -f run/run_scripts_tb.f -o simv_fw_test -l compile_fw.log\\n./simv_fw_test +HEX=Scripts/soc_full_test.hex -l sim.log\\n\",\"Cwd\":\"/home/student/Documents/SOC_Datalogger_project\",\"IsDaemon\":false,\"RequestedTerminalID\":\"\",\"RunPersistent\":false,\"WaitMsBeforeAsync\":10000,\"toolAction\":\"Recompiling and running simulation with dwidth converter fix\",\"toolSummary\":\"Run simulation with dwidth fix\"}", "thinkingSignature":"EoQCCoECAWkUfRNacUvvkMXhRCtu2KUAxmFMksk7xm0V78HVLiTBrC/kmw2TF3mrDGzZfWOLZRnoU6Zy5SQkc3XHs3S1O7tPx3GiJQtcjH1cOvFoRYC/NaTOpL+1xeQAOd1OlzYgrTeCUFc8/u7yevM39EM8wHZpdOdRUrBjX8XAJBKQuPWq4a4NXTpIhrlkv9NRok7Fv6kP2Z31EIYbpcqIPl2Je7o2Xi/Fx5s7d8X5yMnLLe7G5nAh50Hywj0Z69cxBzaiYl6j9j9DkTAJHN3hrVVe4+df9J1U5vk+wWAv6XyJgcc+SVp6uG1v9oJVDiinryfLqe+8MD3RpfDKUDF+f4SRCuU="}}}
+ANTIGRAVITY_PROJECT_ID=default-cli-project
+ANTIGRAVITY_LS_VERSION=cli-1.4.0
+ANTIGRAVITY_LS_ADDRESS=localhost:36855
+ANTIGRAVITY_CSRF_TOKEN=f35bb538-9a2d-4a69-9380-610fb2a9c578
+ANTIGRAVITY_CONVERSATION_ID=eebb5766-6db5-4013-b222-d7beccc5753a
+ANTIGRAVITY_APP_DATA_DIR=/home/student/.gemini/antigravity-cli
+ANTIGRAVITY_AGENTAPI_EXE=/home/student/.local/bin/agy
+ANTIGRAVITY_AGENT=1
+0
+0
+124
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/register_interface/assign.svh
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/register_interface/typedef.svh
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/common_cells/assertions.svh
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_rtl_macros.vh
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/rggen_clog2.vh
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/dma_pkg.svh
+1792211621 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/axi_uart.vh
+1792211621 /home/student/Documents/SOC_Datalogger_project/axi-lite_uart-ipcore-develop/src/include/axi_uart_defines.vh
+1792214078 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/pic_map_auto.svh
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/el2_dec_csr_equ_m.svh
+1792214078 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_param.vh
+1792214078 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/el2_pdef.vh
+1792227262 /home/student/Documents/SOC_Datalogger_project/Scripts/veer2_dma_aes_wdt_uart_gpio_timer_tb.sv
+1792224946 /home/student/Documents/SOC_Datalogger_project/RTL_files/veer2_dma_aes_wdt_uart_gpio_timer.v
+1792227479 /home/student/Documents/SOC_Datalogger_project/RTL_files/axi_dwidth_converter_64to32.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/axi4_to_axilite_bridge.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/axi_interconnect_wrap_2x6.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/axi_interconnect.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/arbiter.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/priority_encoder.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/timer_axi_wrapper.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/System_Timer/timer_core.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/gpio_axi_wrapper.v
+1792221094 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_reg_top.sv
+1792224974 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/prim_subreg.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_input_stage.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_reg_pkg.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/WDT/ef_wdt32_axi_wrapper.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/WDT/EF_WDT32.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_wrapper.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_func_wrapper.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_axi_if.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_streamer.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_fsm.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_fifo.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_maskable_register.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_indirect_register.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_external_register.v
+1792224886 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_default_register.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_register_common.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_counter.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_w01trg.v
+1792225206 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_adapter.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_bridge.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_skid_buffer.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_adapter_common.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_address_decoder.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_or_reducer.v
+1792224845 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_mux.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/dma_utils_pkg.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/amba_axi_pkg.sv
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes_veer_adapter.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_inv_cipher_top.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_cipher_top.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_key_expand_128.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_inv_sbox.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_sbox.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/aes/aes_rcon.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/axi_uart_top.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/uart_transmitter.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/uart_receiver.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/uart_controller.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/uart_parity_bit_compute.v
+1792211621 /home/student/Documents/SOC_Datalogger_project/RTL_files/uart/rtl/axi_internal_fifo.v
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_wrapper.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_pmp.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_dma_ctrl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_pic_ctrl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_mem.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_veer_lockstep.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_lockstep_pkg.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dbg/el2_dbg.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_trigger.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_dccm_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_dccm_mem.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_ecc.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_bus_intf.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_bus_buffer.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_stbuf.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_lsc_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_addrcheck.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu_clkdomain.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lsu/el2_lsu.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_div_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_mul_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/exu/el2_exu_alu_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_trigger.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_tlu_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_pmp_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_ib_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_gpr_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dec/el2_dec_decode_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_iccm_mem.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_mem_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ic_mem.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_bp_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_ifc_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_compress_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/ifu/el2_ifu_aln_ctl.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dmi/rvjtag_tap.v
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_jtag_to_core_sync.v
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_wrapper.v
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/dmi/dmi_mux.v
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/axi4_to_ahb.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/ahb_to_axi4.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_lib.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/mem_lib.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/beh_lib.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_prim_buf.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_prim_generic_buf.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_mem_if.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/el2_mubi_pkg.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/lib/el2_assert.sv
+1792213861 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/design/include/el2_def.sv
+1792214078 /home/student/Documents/SOC_Datalogger_project/RTL_files/Cores-VeeR-EL2/snapshots/default/common_defines.vh
+1792226045 run/run_scripts_tb.f
+4
+1677385575 /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libvirsim.so
+1677385060 /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/liberrorinf.so
+1677385018 /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libsnpsmalloc.so
+1677385055 /home/student/snps_tools_target/vcs/U-2023.03/linux64/lib/libvfs.so
+1792227502 simv_fw_test.daidir
+-1 partitionlib

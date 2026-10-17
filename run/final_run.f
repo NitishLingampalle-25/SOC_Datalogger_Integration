@@ -137,6 +137,21 @@
 // =============================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/amba_axi_pkg.sv
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/inc/dma_utils_pkg.sv
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_mux.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_or_reducer.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_address_decoder.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_adapter_common.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_skid_buffer.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_bridge.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_axi4lite_adapter.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_w01trg.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_bit_field_counter.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_register_common.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_default_register.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_external_register.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_indirect_register.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen-verilog-rtl/rggen_maskable_register.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/rggen_default_register_shim.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/csr_dma.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/DMA/dma_fifo.sv
@@ -157,6 +172,7 @@
 // =============================================================================
 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_reg_pkg.sv
 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_input_stage.sv
+/home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/prim_subreg.sv
 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio_reg_top.sv
 /home/student/Documents/SOC_Datalogger_project/RTL_files/GPIO/gpio.sv
 /home/student/Documents/SOC_Datalogger_project/RTL_files/gpio_axi_wrapper.v
@@ -175,6 +191,7 @@
 /home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/axi_interconnect.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/Interconnect/axi_interconnect_wrap_2x6.v
 /home/student/Documents/SOC_Datalogger_project/RTL_files/axi4_to_axilite_bridge.v
+/home/student/Documents/SOC_Datalogger_project/RTL_files/axi_dwidth_converter_64to32.v
 
 // =============================================================================
 // Full SoC Top-Level
