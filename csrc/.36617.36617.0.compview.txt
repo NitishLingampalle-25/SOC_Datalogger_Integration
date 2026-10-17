@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1791005435.160740801, "rt":5.08, "ut":4.31, "st":0.07}}
-{"vcselab":{"timestamp_begin":1791005440.273603517, "rt":1.40, "ut":0.18, "st":0.03}}
-{"link":{"timestamp_begin":1791005441.694279689, "rt":0.11, "ut":0.07, "st":0.03}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1791005434.900153517}
-{"VCS_COMP_START_TIME": 1791005434.900153517}
-{"VCS_COMP_END_TIME": 1791005441.830716108}
-{"VCS_USER_OPTIONS": "-full64 -sverilog -timescale=1ns/1ps +define+RV_BUILD_AXI4 +incdir+axi-lite_uart-ipcore-develop/src/include +incdir+RTL_files/Cores-VeeR-EL2/snapshots/default +incdir+RTL_files/Cores-VeeR-EL2/design/include -f run/runf.f RTL_files/aes/timescale.v RTL_files/aes/aes_sbox.v RTL_files/aes/aes_inv_sbox.v RTL_files/aes/aes_rcon.v RTL_files/aes/aes_key_expand_128.v RTL_files/aes/aes_cipher_top.v RTL_files/aes/aes_inv_cipher_top.v RTL_files/aes_veer_adapter.v RTL_files/veer2_uart_aes_integrated.v TB_files/veer2_uart_aes_tb.sv -top veer2_uart_aes_tb -o run/simv_veer2_uart_aes_tb"}
-{"vcs1": {"peak_mem": 407916}}
-{"vcselab": {"peak_mem": 260844}}

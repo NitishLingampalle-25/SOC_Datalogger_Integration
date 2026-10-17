@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1792226834.794113606, "rt":6.26, "ut":4.72, "st":0.10}}
-{"vcselab":{"timestamp_begin":1792226841.089043108, "rt":1.68, "ut":0.29, "st":0.04}}
-{"link":{"timestamp_begin":1792226842.792534657, "rt":0.13, "ut":0.08, "st":0.04}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1792226834.615201414}
-{"VCS_COMP_START_TIME": 1792226834.615201414}
-{"VCS_COMP_END_TIME": 1792226842.951326317}
-{"VCS_USER_OPTIONS": "-full64 -sverilog -top veer2_dma_aes_wdt_uart_gpio_timer_tb -f run/run_scripts_tb.f -o simv_fw_test -l compile_fw.log"}
-{"vcs1": {"peak_mem": 423176}}
-{"vcselab": {"peak_mem": 261136}}

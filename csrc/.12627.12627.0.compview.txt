@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1791001613.002176004, "rt":1.44, "ut":0.10, "st":0.03}}
-{"vcselab":{"timestamp_begin":1791001614.473682320, "rt":1.43, "ut":0.07, "st":0.02}}
-{"link":{"timestamp_begin":1791001615.924390052, "rt":0.11, "ut":0.08, "st":0.03}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1791001612.816769742}
-{"VCS_COMP_START_TIME": 1791001612.816769742}
-{"VCS_COMP_END_TIME": 1791001616.061656118}
-{"VCS_USER_OPTIONS": "-full64 -sverilog RTL_files/aes/timescale.v RTL_files/aes/aes_sbox.v RTL_files/aes/aes_inv_sbox.v RTL_files/aes/aes_rcon.v RTL_files/aes/aes_key_expand_128.v RTL_files/aes/aes_inv_cipher_top.v /home/student/.gemini/antigravity-cli/brain/e3656815-3db3-4077-83b3-f8f7209dc94c/scratch/test_aes_inv.sv -o /home/student/.gemini/antigravity-cli/brain/e3656815-3db3-4077-83b3-f8f7209dc94c/scratch/simv_test_inv"}
-{"vcs1": {"peak_mem": 371204}}
-{"vcselab": {"peak_mem": 235328}}

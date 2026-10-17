@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1791003142.942106823, "rt":7.31, "ut":4.30, "st":0.10}}
-{"vcselab":{"timestamp_begin":1791003150.286181785, "rt":2.67, "ut":0.18, "st":0.03}}
-{"link":{"timestamp_begin":1791003152.980111559, "rt":0.09, "ut":0.06, "st":0.03}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1791003142.752534530}
-{"VCS_COMP_START_TIME": 1791003142.752534530}
-{"VCS_COMP_END_TIME": 1791003153.102980089}
-{"VCS_USER_OPTIONS": "-full64 -sverilog -file /tmp/test_compile.f -top veer2_uart_aes_integrated -o /tmp/simv_integrated_top"}
-{"vcs1": {"peak_mem": 404908}}
-{"vcselab": {"peak_mem": 261076}}

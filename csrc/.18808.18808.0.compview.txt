@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1791003004.893786129, "rt":1.65, "ut":0.12, "st":0.04}}
-{"vcselab":{"timestamp_begin":1791003006.577583776, "rt":2.34, "ut":0.10, "st":0.03}}
-{"link":{"timestamp_begin":1791003008.945719860, "rt":0.08, "ut":0.05, "st":0.02}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1791003004.704463839}
-{"VCS_COMP_START_TIME": 1791003004.704463839}
-{"VCS_COMP_END_TIME": 1791003009.053865533}
-{"VCS_USER_OPTIONS": "-full64 -sverilog RTL_files/aes/timescale.v RTL_files/aes/aes_sbox.v RTL_files/aes/aes_inv_sbox.v RTL_files/aes/aes_rcon.v RTL_files/aes/aes_key_expand_128.v RTL_files/aes/aes_cipher_top.v RTL_files/aes/aes_inv_cipher_top.v RTL_files/aes_veer_adapter.v -o /tmp/simv_syntax_adapter"}
-{"vcs1": {"peak_mem": 373256}}
-{"vcselab": {"peak_mem": 251792}}

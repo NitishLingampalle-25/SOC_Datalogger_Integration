@@ -1,6 +1,0 @@
-Command exited with non-zero status 255
-{"vcs1":{"timestamp_begin":1792224952.530120596, "rt":1.81, "ut":0.43, "st":0.03}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1792224952.359631975}
-{"VCS_COMP_START_TIME": 1792224952.359631975}
-{"VCS_COMP_END_TIME": 1792224954.365200234}
-{"VCS_USER_OPTIONS": "-full64 -sverilog -top veer2_dma_aes_wdt_uart_gpio_timer_tb -l /tmp/compile_final.log -f run/final_run.f -o /tmp/simv_final"}

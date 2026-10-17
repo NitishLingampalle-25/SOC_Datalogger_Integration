@@ -1,24 +1,68 @@
-# Vim temporary files
+# ── Editor temporaries ────────────────────────────────────────────────────────
 *.swp
 *.swo
+*.swn
+*.un~
+*~
+.*.swp
 
-# VCS generated files
-run/simv
-run/simv.daidir/
+# ── VCS compile artifacts ─────────────────────────────────────────────────────
+csrc/
 run/csrc/
+*.daidir/
+simv
+simv_*
+run/simv
+run/simv_*
+simv_fw_test
+simv_test
 
-# Verdi generated files
-run/verdiLog/
-
-# Simulation generated files
+# ── VCS logs & reports ────────────────────────────────────────────────────────
+*.log
+compile*.log
+sim*.log
 run/*.log
-run/*.vpd
+ucli.key
+novas_dump.log
+coding_rule_check.rpt
+
+# ── Waveform dumps ────────────────────────────────────────────────────────────
+*.vcd
+*.fsdb
+*.vpd
+*.shm/
+run/*.vcd
 run/*.fsdb
 
-# General compiled/generated files
+# ── Verdi generated ───────────────────────────────────────────────────────────
+verdiLog/
+run/verdiLog/
+novas.rc
+via.rc
+novas.conf
+run/novas.rc
+run/via.rc
+run/novas.conf
+verdi_config_file
+run/verdi_config_file
+
+# ── Misc simulation outputs ───────────────────────────────────────────────────
+run/HM_DIR/
+run/INT_DIR/
+dump.vcd
+dump.fsdb
+
+# ── Compiled objects ──────────────────────────────────────────────────────────
 *.so
 *.o
 *.a
 
-# OS/editor files
+# ── Firmware build artifacts (keep .c .s .ld .hex but not .elf) ──────────────
+Scripts/*.elf
+Scripts/*.dump
+Scripts/*.bin
+Scripts/*.o
+
+# ── OS / IDE ──────────────────────────────────────────────────────────────────
 .DS_Store
+Thumbs.db

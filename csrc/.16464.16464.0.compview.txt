@@ -1,9 +1,0 @@
-{"vcs1":{"timestamp_begin":1791001915.581789666, "rt":1.38, "ut":0.13, "st":0.04}}
-{"vcselab":{"timestamp_begin":1791001916.999188752, "rt":1.62, "ut":0.11, "st":0.03}}
-{"link":{"timestamp_begin":1791001918.648675726, "rt":0.08, "ut":0.06, "st":0.02}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1791001915.378556605}
-{"VCS_COMP_START_TIME": 1791001915.378556605}
-{"VCS_COMP_END_TIME": 1791001918.758400107}
-{"VCS_USER_OPTIONS": "-full64 -sverilog RTL_files/aes/timescale.v RTL_files/aes/aes_sbox.v RTL_files/aes/aes_inv_sbox.v RTL_files/aes/aes_rcon.v RTL_files/aes/aes_key_expand_128.v RTL_files/aes/aes_cipher_top.v RTL_files/aes/aes_inv_cipher_top.v /home/student/.gemini/antigravity-cli/brain/e3656815-3db3-4077-83b3-f8f7209dc94c/scratch/aes_veer_adapter.v /home/student/.gemini/antigravity-cli/brain/e3656815-3db3-4077-83b3-f8f7209dc94c/scratch/tb_aes_veer_adapter.sv -o /home/student/.gemini/antigravity-cli/brain/e3656815-3db3-4077-83b3-f8f7209dc94c/scratch/simv_tb_adapter"}
-{"vcs1": {"peak_mem": 373424}}
-{"vcselab": {"peak_mem": 251788}}

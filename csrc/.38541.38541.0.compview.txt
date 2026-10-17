@@ -1,7 +1,0 @@
-Command exited with non-zero status 255
-{"vcs1":{"timestamp_begin":1791005857.813152835, "rt":2.47, "ut":1.21, "st":0.03}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1791005857.610577008}
-{"VCS_COMP_START_TIME": 1791005857.610577008}
-{"VCS_COMP_END_TIME": 1791005860.314373712}
-{"VCS_USER_OPTIONS": "-full64 -sverilog -timescale=1ns/1ps +define+RV_BUILD_AXI4 +incdir+axi-lite_uart-ipcore-develop/src/include +incdir+RTL_files/Cores-VeeR-EL2/snapshots/default +incdir+RTL_files/Cores-VeeR-EL2/design/include -f run/runf.f TB_files/veer_wrapper_uart_integrated_tb.sv -top veer_wrapper_uart_integrated_tb -o run/simv_test"}
-{"vcs1": {"peak_mem": 391140}}

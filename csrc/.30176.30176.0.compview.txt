@@ -1,7 +1,0 @@
-Command exited with non-zero status 255
-{"vcs1":{"timestamp_begin":1791004383.844832388, "rt":2.08, "ut":0.06, "st":0.01}}
-{"SNPS_VCS_INTERNAL_ROOT_START_TIME": 1791004383.599626981}
-{"VCS_COMP_START_TIME": 1791004383.599626981}
-{"VCS_COMP_END_TIME": 1791004385.951323867}
-{"VCS_USER_OPTIONS": "-full64 -sverilog -timescale=1ns/1ps +incdir+axi-lite_uart-ipcore-develop/src/include RTL_files/Interconnect/priority_encoder.v RTL_files/Interconnect/arbiter.v RTL_files/Interconnect/axi_interconnect.v RTL_files/Interconnect/axi_interconnect_wrap_2x6.v RTL_files/axi4_to_axilite_bridge.v axi-lite_uart-ipcore-develop/src/rtl/uart_controller.v axi-lite_uart-ipcore-develop/src/rtl/uart_receiver.v axi-lite_uart-ipcore-develop/src/rtl/uart_transmitter.v axi-lite_uart-ipcore-develop/src/rtl/uart_parity_bit_compute.v axi-lite_uart-ipcore-develop/src/rtl/axi_internal_fifo.v axi-lite_uart-ipcore-develop/src/rtl/axi_uart_top.v RTL_files/axi_interconnect_uart_top.v TB_files/tb_interconnect_uart.sv -top tb_interconnect_uart -o run/simv_tb_interconnect_uart"}
-{"vcs1": {"peak_mem": 357944}}
