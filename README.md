@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <div align="center">
 
 # Secure RISC-V SoC Data Logger for Mission-Critical Telemetry
@@ -226,3 +227,6 @@ Trained in Semiconductor Device Fabrication at CENSE, IISc Bangalore · Samsung 
 
 📧 [nitishlingampalle@ieee.org](mailto:nitishlingampalle@ieee.org)
 🔗 [linkedin.com/in/nitishlingampalle25](https://www.linkedin.com/in/nitishlingampalle25/)
+=======
+# SOC_Datalogger_Integration
+>>>>>>> fde64a9f7b2928fa8d30e19dbba01e81e3f96e1b
